@@ -19,7 +19,9 @@ Projeto desenvolvido em colaboração entre estudantes do SENAI.
 Participantes:
 - Gabriel  
 - Arthur
-- 
+- Stefani
+- Bruno
+- Vinicios
 
 ---
 
