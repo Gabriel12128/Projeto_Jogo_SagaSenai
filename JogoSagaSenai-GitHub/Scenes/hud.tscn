@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ixu2wblq46vt"]
+
+[ext_resource type="Script" uid="uid://bbj4hpm3ywou7" path="res://Scripts/Hud.cs" id="1_e0onf"]
+
+[node name="HUD" type="Control" unique_id=594081560 node_paths=PackedStringArray("lifeText")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e0onf")
+lifeText = NodePath("Life")
+
+[node name="Life" type="Label" parent="." unique_id=1236699739]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 21.0
+offset_right = 61.0
+offset_bottom = 44.0
+text = "0"
