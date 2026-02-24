@@ -17,10 +17,6 @@ public partial class Hud : Control
 	}
 
 	
-	public override void _Process(double delta)
-	{
-	}
-
 	public void UpdateLifeText(int life)
 	{
 		lifeText.Text = life.ToString();

@@ -3,8 +3,11 @@ using System;
 using PlayerC;
 using Interfaces;
 
+
 namespace EnemyC
 {
+    
+
 	public partial class Enemy : CharacterBody2D
 	{
 		private int life = 100;
@@ -13,13 +16,20 @@ namespace EnemyC
 
 		public float speed { get; set; } = 50f;
 
-		
+		private float Speed = 2f;
+
+		private float intencityIdle = 3f;
+
+		private float intencityWalk = 3f;
 
 		[Export] private Player player;
 
 		[Export] private Node behaviorNode;
 
-		[Export] public AnimatedSprite2D anim;
+
+		[Export] public Sprite2D animt;
+
+		
 
 		enum EnemyState
 		{
@@ -48,10 +58,12 @@ namespace EnemyC
 			{
 				case EnemyState.idle:
 					Idle();
+					IdleAnimation(delta);
 					break;
 				
 				case EnemyState.walk:
 					Walk();
+					WalkAnimation(delta);
 					break;
 			}
 		}
@@ -60,13 +72,13 @@ namespace EnemyC
 		public void Go_To_Idle()
 		{
 			state = EnemyState.idle;
-			anim.Play("idle");
+			
 		}
 
 		public void Go_To_Walk()
 		{
 			state = EnemyState.walk;
-			anim.Play("Walk");
+			
 		}
 
 
@@ -94,12 +106,12 @@ namespace EnemyC
 		{
 			if(Velocity.X > 0)
 			{
-				anim.FlipH = false;
+				animt.FlipH = false;
 				//flipCollision = true;
 			}	
 			else if(Velocity.X < 0)
 			{
-				anim.FlipH = true;
+				animt.FlipH = true;
 				//flipCollision = false;
 			}
 		}
@@ -114,6 +126,22 @@ namespace EnemyC
 			life = Value;
 		}
 
-	}
-}
+		private void IdleAnimation(double delta)
+        {
+			float time = 0;
+            time += (float)delta;
 
+    		animt.RotationDegrees = Mathf.Sin(time * Speed) * intencityIdle;
+        }
+
+		private void WalkAnimation(double delta)
+        {
+			float time = 0;
+            time += (float)delta;
+
+    		animt.RotationDegrees = Mathf.Sin(time * Speed) * intencityWalk;
+        }
+
+	}
+
+}

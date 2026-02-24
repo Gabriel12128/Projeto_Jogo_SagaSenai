@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://diybmo8jacfeb"]
 
-[ext_resource type="PackedScene" uid="uid://bu23oc575shsw" path="res://Entities/player.tscn" id="1_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://ckk0pse87vto3" path="res://Entities/enemy_1.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://ixu2wblq46vt" path="res://Scenes/hud.tscn" id="4_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://ckk0pse87vto3" path="res://Entities/enemy_1.tscn" id="4_i6g32"]
 [ext_resource type="Texture2D" uid="uid://uygettsbm4hu" path="res://Sprites/DirtBase.png" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bu23oc575shsw" path="res://Entities/player.tscn" id="5_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://cjvkirodap2nt" path="res://Sprites/Terrain (16x16).png" id="5_i6g32"]
-[ext_resource type="PackedScene" uid="uid://ixu2wblq46vt" path="res://Scenes/hud.tscn" id="6_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://cwgkoa4cai7b" path="res://Sprites/RockBase.png" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://df4rrsf4qakbs" path="res://Entities/enemy_2.tscn" id="7_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1l0tm"]
 texture = ExtResource("4_wowpa")
@@ -329,10 +330,6 @@ sources/2 = SubResource("TileSetAtlasSource_h4fw4")
 
 [node name="Game" type="Node2D" unique_id=15225952]
 
-[node name="Player" parent="." unique_id=436251967 instance=ExtResource("1_qxrlw")]
-z_index = 5
-position = Vector2(391, 349)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=358829314]
 visible = false
 z_index = 3
@@ -353,9 +350,15 @@ offset_right = 1153.0
 offset_bottom = 644.0
 color = Color(0.06550369, 0.035510633, 0.12455983, 1)
 
-[node name="Enemy" parent="." unique_id=542827059 node_paths=PackedStringArray("player") instance=ExtResource("2_wrm1d")]
-z_index = 3
+[node name="HUD" parent="." unique_id=594081560 node_paths=PackedStringArray("player") instance=ExtResource("4_1l0tm")]
 player = NodePath("../Player")
 
-[node name="HUD" parent="." unique_id=594081560 node_paths=PackedStringArray("player") instance=ExtResource("6_1l0tm")]
+[node name="Enemy" parent="." unique_id=542827059 node_paths=PackedStringArray("player") instance=ExtResource("4_i6g32")]
+position = Vector2(659, 348)
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=436251967 instance=ExtResource("5_1l0tm")]
+
+[node name="Enemy_2" parent="." unique_id=1123409866 node_paths=PackedStringArray("player") instance=ExtResource("7_1l0tm")]
+position = Vector2(334, 285)
 player = NodePath("../Player")

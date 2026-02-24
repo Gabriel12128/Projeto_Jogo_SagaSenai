@@ -11,11 +11,20 @@ public partial class BurstBehavior : Node, IEnemyBehavior
     private float explodeTime = 0f;
     private bool charging = false;
 
+    [Export] private AnimatedSprite2D anim;
     private const float explodeDelay = 0.65f;
     private const float triggerDistance = 25f;
 
+
+    public override void _Ready()
+    {
+        anim.Visible = false;
+    }
+
+
     public void Execute(Player player, Enemy enemy, double delta)
     {
+
         Vector2 dir = (player.GlobalPosition - enemy.GlobalPosition).Normalized();
 
         float distance = enemy.GlobalPosition.DistanceTo(player.GlobalPosition);
@@ -49,22 +58,19 @@ public partial class BurstBehavior : Node, IEnemyBehavior
        
         if (charging)
         {
-
-			
-
-
             explodeTime += (float)delta;
-
+            enemy.animt.Visible = false;
+            
             enemy.Velocity = Vector2.Zero;
-			enemy.anim.Play("Atack");
-			if (enemy.anim.Animation == "Atack" && enemy.anim.Frame == 4 && explodeTime > 0.5f)
+			anim.Play("Atack");
+			if (anim.Animation == "Atack" && anim.Frame == 4 && explodeTime > 0.5f)
         	{
             	ExplodePar.Emitting = true;
         	}
 
             if (explodeTime >= explodeDelay)
             {
-    			
+    			anim.Visible = true;
                 Explode(player, enemy);
             }
         }

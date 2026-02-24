@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using EnemyC;
 
 namespace PlayerC
 {
@@ -263,17 +264,17 @@ namespace PlayerC
 
 		private void FlipCollision(bool facingRight)
 		{
-    		if (facingRight)
-        	{
+			if (facingRight)
+			{
 				hitBoxAtackWalk.Position = new Vector2(25, 0);
 				hitBoxAtackIdle.Position = new Vector2(20, 10); 
 			}	
-    		else
+			else
 			{
 				hitBoxAtackWalk.Position = new Vector2(-25, 0); 
 				hitBoxAtackIdle.Position = new Vector2(-20, 10); 
 			}
-        	
+			
 		}
 
 		public void _on_hit_idle_body_entered(Node2D body)
@@ -294,6 +295,5 @@ namespace PlayerC
 
 		
 	}
+
 }
-
-

@@ -1,9 +1,59 @@
 [gd_scene format=3 uid="uid://df4rrsf4qakbs"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8bc84"]
+[ext_resource type="Script" uid="uid://jgw6l4w21t4g" path="res://Scripts/Enemy.cs" id="1_uhogk"]
+[ext_resource type="Script" uid="uid://dt0ijklinudcf" path="res://Scripts/Behavior/ChaseBehavior.cs" id="2_esmnh"]
 
-[node name="Enemy_2" type="CharacterBody2D" unique_id=1123409866]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rumbv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uhogk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhogk"]
+radius = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esmnh"]
+radius = 18.027756
+
+[node name="Enemy_2" type="CharacterBody2D" unique_id=1123409866 node_paths=PackedStringArray("behaviorNode", "anim")]
+position = Vector2(333, 285)
+script = ExtResource("1_uhogk")
+behaviorNode = NodePath("ChaseBahavior")
+anim = NodePath("Animations")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=2071162764]
-position = Vector2(208, 132)
-shape = SubResource("CapsuleShape2D_8bc84")
+shape = SubResource("CircleShape2D_rumbv")
+
+[node name="Animations" type="AnimatedSprite2D" parent="." unique_id=892490794]
+sprite_frames = SubResource("SpriteFrames_uhogk")
+animation = &"Walk"
+
+[node name="ChaseBahavior" type="Node2D" parent="." unique_id=531128457 node_paths=PackedStringArray("atack")]
+script = ExtResource("2_esmnh")
+atack = NodePath("../HitBoxAtack/Collision")
+
+[node name="HitBoxCheckAtack" type="Area2D" parent="." unique_id=1959062993]
+
+[node name="Collision" type="CollisionShape2D" parent="HitBoxCheckAtack" unique_id=1268799603]
+shape = SubResource("CircleShape2D_uhogk")
+debug_color = Color(0.793935, 0.38123915, 0.5092695, 0.41960785)
+
+[node name="HitBoxAtack" type="Area2D" parent="." unique_id=1271667256]
+
+[node name="Collision" type="CollisionShape2D" parent="HitBoxAtack" unique_id=33545010]
+shape = SubResource("CircleShape2D_esmnh")
+debug_color = Color(0.95281965, 0.17427853, 0.34428632, 0.41960785)
+
+[connection signal="body_entered" from="HitBoxCheckAtack" to="ChaseBahavior" method="_on_hit_box_check_atack_body_entered"]
+[connection signal="body_exited" from="HitBoxCheckAtack" to="ChaseBahavior" method="_on_hit_box_check_atack_body_exited"]
+[connection signal="body_entered" from="HitBoxAtack" to="ChaseBahavior" method="_on_hit_box_atack_body_entered"]
+[connection signal="body_exited" from="HitBoxAtack" to="ChaseBahavior" method="_on_hit_box_atack_body_exited"]
