@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using System;
 using PlayerC;
 using Interfaces;
@@ -7,9 +7,13 @@ namespace EnemyC
 {
 	public partial class Enemy : CharacterBody2D
 	{
-		private int life = 100;
 
-		public int damage { get; private set; } = 20;
+        [Export] private PackedScene coletavelScene;
+
+
+        private int life = 100;
+
+		public int damage { get; private set; } = 25;
 		public float speed { get; set; } = 50f;
 
 		private float Speed = 6f;
@@ -49,9 +53,21 @@ namespace EnemyC
 			Go_To_Idle();
 		}
 
-		public override void _PhysicsProcess(double delta)
+		public override void _Process(double _delta)
+        {
+			if(life <= 25)
+				DropCollectavel();
+        }
+
+        public override void _PhysicsProcess(double delta)
 		{
-			float d = (float)delta;
+
+			
+
+            if (player == null)
+				return;
+
+            float d = (float)delta;
 
 			if (behavior != null && knockbackVelocity == Vector2.Zero)
 				behavior.Execute(player, this, delta);
@@ -192,5 +208,21 @@ namespace EnemyC
 			animt.RotationDegrees =
 				Mathf.Sin(animTime * Speed) * intencityWalk;
 		}
-	}
+
+        private void DropCollectavel()
+        {
+            if (coletavelScene == null)
+                return;
+
+
+
+
+
+            var coletavel = coletavelScene.Instantiate<Node2D>();
+
+            GetParent().AddChild(coletavel);
+            coletavel.GlobalPosition = GlobalPosition;
+
+        }
+    }
 }

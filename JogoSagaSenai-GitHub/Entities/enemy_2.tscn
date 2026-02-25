@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jgw6l4w21t4g" path="res://Scripts/Enemy.cs" id="1_uhogk"]
 [ext_resource type="Script" uid="uid://dt0ijklinudcf" path="res://Scripts/Behavior/ChaseBehavior.cs" id="2_esmnh"]
+[ext_resource type="PackedScene" uid="uid://b1sbxm815oa4r" path="res://Entities/coletavel.tscn" id="2_jd2eq"]
 [ext_resource type="Texture2D" uid="uid://dh4p1r12hqrey" path="res://Sprites/Lata_vasia.png" id="2_rumbv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rumbv"]
@@ -9,6 +10,7 @@
 [node name="Enemy_2" type="CharacterBody2D" unique_id=1123409866 node_paths=PackedStringArray("behaviorNode", "animt")]
 position = Vector2(333, 285)
 script = ExtResource("1_uhogk")
+coletavelScene = ExtResource("2_jd2eq")
 behaviorNode = NodePath("ChaseBahavior")
 animt = NodePath("Animations")
 

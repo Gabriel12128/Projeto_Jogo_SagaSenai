@@ -17,6 +17,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="JogoSagaSenai"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 
+[display]
+
+window/size/mode=2
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="teste"

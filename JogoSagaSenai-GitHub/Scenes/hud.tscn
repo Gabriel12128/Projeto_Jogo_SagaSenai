@@ -1,17 +1,63 @@
 [gd_scene format=3 uid="uid://ixu2wblq46vt"]
 
 [ext_resource type="Script" uid="uid://bbj4hpm3ywou7" path="res://Scripts/Hud.cs" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://d0reik644hvh" path="res://Sprites/Life-C.png" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://cku12e2emojdh" path="res://Sprites/gotas/gota_6.png" id="3_43w4t"]
+[ext_resource type="Texture2D" uid="uid://bpxy5pi5x34xw" path="res://Sprites/gotas/gota_5.png" id="4_7gr8i"]
+[ext_resource type="Texture2D" uid="uid://dxgv5lwgs24qk" path="res://Sprites/gotas/gota_4.png" id="5_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://cxouxhg1lmo1i" path="res://Sprites/gotas/gota_3.png" id="6_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://cstxdoqtv321c" path="res://Sprites/gotas/gota_2.png" id="7_piegi"]
+[ext_resource type="Texture2D" uid="uid://bge3pxl57anor" path="res://Sprites/gotas/gota_1.png" id="8_i2avg"]
 
-[node name="HUD" type="Control" unique_id=594081560 node_paths=PackedStringArray("lifeText")]
-layout_mode = 3
-anchors_preset = 0
+[node name="HUD" type="CanvasLayer" unique_id=1474538209 node_paths=PackedStringArray("sprites", "gotas")]
 script = ExtResource("1_e0onf")
-lifeText = NodePath("Life")
+sprites = [NodePath("Coracoes/Cora4"), NodePath("Coracoes/Cora3"), NodePath("Coracoes/Cora2"), NodePath("Coracoes/Cora1")]
+gotas = [NodePath("Coracoes/G1"), NodePath("Coracoes/G2"), NodePath("Coracoes/G3"), NodePath("Coracoes/G4"), NodePath("Coracoes/G5"), NodePath("Coracoes/G6")]
 
-[node name="Life" type="Label" parent="." unique_id=1236699739]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 21.0
-offset_right = 61.0
-offset_bottom = 44.0
-text = "0"
+[node name="Coracoes" type="Control" parent="." unique_id=860446131]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cora1" type="Sprite2D" parent="Coracoes" unique_id=1278955199]
+position = Vector2(24, 24)
+texture = ExtResource("2_fccik")
+
+[node name="Cora2" type="Sprite2D" parent="Coracoes" unique_id=1557744400]
+position = Vector2(61, 24)
+texture = ExtResource("2_fccik")
+
+[node name="Cora3" type="Sprite2D" parent="Coracoes" unique_id=972737675]
+position = Vector2(96, 24)
+texture = ExtResource("2_fccik")
+
+[node name="Cora4" type="Sprite2D" parent="Coracoes" unique_id=1706625236]
+position = Vector2(133, 24)
+texture = ExtResource("2_fccik")
+
+[node name="G1" type="Sprite2D" parent="Coracoes" unique_id=2022815393]
+position = Vector2(727, 28)
+texture = ExtResource("3_43w4t")
+
+[node name="G2" type="Sprite2D" parent="Coracoes" unique_id=803393374]
+position = Vector2(690, 28)
+texture = ExtResource("4_7gr8i")
+
+[node name="G3" type="Sprite2D" parent="Coracoes" unique_id=1679789254]
+position = Vector2(654, 28)
+texture = ExtResource("5_5ep0j")
+
+[node name="G4" type="Sprite2D" parent="Coracoes" unique_id=903129106]
+position = Vector2(617, 28)
+texture = ExtResource("6_4f5kr")
+
+[node name="G5" type="Sprite2D" parent="Coracoes" unique_id=1305647217]
+position = Vector2(581, 28)
+texture = ExtResource("7_piegi")
+
+[node name="G6" type="Sprite2D" parent="Coracoes" unique_id=274580429]
+position = Vector2(544, 28)
+texture = ExtResource("8_i2avg")

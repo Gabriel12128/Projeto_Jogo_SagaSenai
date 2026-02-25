@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cu53gs2ik1hg1"]
+
+[ext_resource type="Script" uid="uid://cvjov06qisekr" path="res://Scripts/GameOver.cs" id="1_ojehl"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1346354641 node_paths=PackedStringArray("gameOverText", "restartButton", "fundo")]
+script = ExtResource("1_ojehl")
+gameOverText = NodePath("Control/GameOverText")
+restartButton = NodePath("Control/Retry")
+fundo = NodePath("Control/fundo")
+
+[node name="Control" type="Control" parent="." unique_id=1730566151]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="fundo" type="ColorRect" parent="Control" unique_id=607270378]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 647.0
+color = Color(0.20871013, 0.20871016, 0.20871013, 1)
+
+[node name="GameOverText" type="Label" parent="Control" unique_id=1416290577]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 171.0
+offset_right = 472.0
+offset_bottom = 194.0
+scale = Vector2(5, 5)
+text = "Game Over"
+
+[node name="Retry" type="Button" parent="Control" unique_id=2073619762]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 351.0
+offset_right = 593.5
+offset_bottom = 382.0
+scale = Vector2(2, 2)
+text = "Retry"
+
+[connection signal="pressed" from="Control/Retry" to="." method="_on_retry_pressed"]

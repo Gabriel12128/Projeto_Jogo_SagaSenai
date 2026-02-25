@@ -7,7 +7,8 @@ namespace PlayerC
 	public partial class Player : CharacterBody2D
 	{
 		private int life = 100;
-		private int damage = 20;
+		private float coletaveis = 0;
+        private int damage = 20;
 
 		private const float Speed = 250.0f;
 		private const float JumpDuration = 0.6f;
@@ -63,8 +64,10 @@ namespace PlayerC
 
 		public override void _Process(double delta)
 		{
-			Hud.instance.UpdateLifeText(life);
-		}
+			Hud.instance.UpdateLife(life);
+			Hud.instance.UpdateGotas(coletaveis);
+			Death();
+        }
 
 		public override void _PhysicsProcess(double delta)
 		{
@@ -330,7 +333,27 @@ namespace PlayerC
 				hitBoxAtackIdle.Position = new Vector2(-25, 10);
 		}
 
-		public void _on_hit_idle_body_entered(Node2D body)
+		public void UpdateGota(float g)
+		{
+            coletaveis += g;
+			GD.Print(coletaveis);
+            Hud.instance.UpdateGotas(coletaveis);
+        }
+
+		private void Death()
+		{
+			if(life <= 0)
+			{
+				if(GameOver.instance != null)
+					GameOver.instance.ShowGameOver();
+
+                QueueFree();
+            }
+				
+        }
+
+
+        public void _on_hit_idle_body_entered(Node2D body)
 		{
 			if (body is Enemy enemy)
 				enemy.TakeDamage(damage);
