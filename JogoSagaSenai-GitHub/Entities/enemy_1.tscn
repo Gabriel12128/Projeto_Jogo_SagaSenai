@@ -3,75 +3,10 @@
 [ext_resource type="Script" uid="uid://jgw6l4w21t4g" path="res://Scripts/Enemy.cs" id="1_jwqgc"]
 [ext_resource type="Texture2D" uid="uid://d1ype1heyrtxs" path="res://Sprites/Bolha_Suja.png" id="3_c71ah"]
 [ext_resource type="Script" uid="uid://81day1ap5fco" path="res://Scripts/Behavior/BurstBehavior.cs" id="4_c71ah"]
-[ext_resource type="Texture2D" uid="uid://my6qekijle74" path="res://Animations/Bolha_Suja_Explosion.png" id="4_ns1ty"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0a874"]
-radius = 8.0
-height = 16.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xf2mv"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eg7tm"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwi7c"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vppa8"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gge8k"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(192, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bd5ph"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(240, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yehbm"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(288, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f42xj"]
-atlas = ExtResource("4_ns1ty")
-region = Rect2(336, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sqrfd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xf2mv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eg7tm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iwi7c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vppa8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gge8k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bd5ph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yehbm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f42xj")
-}],
-"loop": true,
-"name": &"Atack",
-"speed": 10.0
-}]
+radius = 13.0
+height = 26.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=542827059 node_paths=PackedStringArray("behaviorNode", "animt") groups=["enemies"]]
 position = Vector2(542, 316)
@@ -80,7 +15,7 @@ behaviorNode = NodePath("BurstBehavior")
 animt = NodePath("Animation")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1009010734]
-position = Vector2(-5, 16)
+position = Vector2(-7, 9)
 shape = SubResource("CapsuleShape2D_0a874")
 debug_color = Color(0.5944255, 0.540758, 0.22234103, 0.41960785)
 
@@ -89,15 +24,14 @@ z_index = 1
 position = Vector2(-5, 9)
 texture = ExtResource("3_c71ah")
 
-[node name="BurstBehavior" type="Node2D" parent="." unique_id=1210630760 node_paths=PackedStringArray("ExplodePar", "anim")]
+[node name="BurstBehavior" type="Node2D" parent="." unique_id=1210630760 node_paths=PackedStringArray("ExplodePar")]
 script = ExtResource("4_c71ah")
 ExplodePar = NodePath("../AtackParticles")
-anim = NodePath("../Explosion")
 
 [node name="AtackParticles" type="CPUParticles2D" parent="." unique_id=1130271639]
 position = Vector2(-6, 4)
 emitting = false
-amount = 120
+amount = 150
 one_shot = true
 explosiveness = 1.0
 direction = Vector2(0, -1)
@@ -108,8 +42,3 @@ initial_velocity_max = 350.0
 scale_amount_min = 5.0
 scale_amount_max = 5.0
 color = Color(0.30980393, 0.1764706, 0.23137255, 1)
-
-[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=528714588]
-position = Vector2(-5, 8)
-sprite_frames = SubResource("SpriteFrames_sqrfd")
-animation = &"Atack"

@@ -360,5 +360,4 @@ player = NodePath("../Player")
 [node name="Player" parent="." unique_id=436251967 instance=ExtResource("5_1l0tm")]
 
 [node name="Enemy_2" parent="." unique_id=1123409866 node_paths=PackedStringArray("player") instance=ExtResource("7_1l0tm")]
-position = Vector2(334, 285)
 player = NodePath("../Player")

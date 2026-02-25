@@ -1,86 +1,55 @@
 using Godot;
-using System;
 using Interfaces;
 using PlayerC;
 using EnemyC;
 
-public partial class ChaseBehavior : Node , IEnemyBehavior
+public partial class ChaseBehavior : Node, IEnemyBehavior
 {
+	private float attackTimer = 0f;
+	private float speedC = 90f;
+	private const float chaseDistance = 300f;
+	private const float stopDistance = 40f;
+	private const float attackInterval = 1f;
 
 	
-	[Export] private CollisionShape2D atack;
-	private bool charging = false;
-	private bool atackT = false;
-
-	private float timeAtack = 0;
-
 	public void Execute(Player player, Enemy enemy, double delta)
 	{
-		Vector2 dir = (player.GlobalPosition - enemy.GlobalPosition).Normalized();
-		float distance = enemy.GlobalPosition.DistanceTo(player.GlobalPosition);
+		float d = (float)delta;
 
-		if(distance < 300)
+		enemy.speed = speedC;
+
+		Vector2 toPlayer = player.GlobalPosition - enemy.GlobalPosition;
+		float distance = toPlayer.Length();
+		Vector2 dir = toPlayer.Normalized();
+
+		if (distance < chaseDistance && distance > stopDistance)
 		{
 			enemy.Velocity = dir * enemy.speed;
 			enemy.MoveAndSlide();
+			attackTimer = 0f;
+			return;
 		}
-		else
+
+		if (distance <= stopDistance)
 		{
 			enemy.Velocity = Vector2.Zero;
-		}
 
+			attackTimer += d;
 
-        if (atackT && charging)
-		{
-			timeAtack += (float)delta;
-
-			if (timeAtack > 1f)
+			if (attackTimer >= attackInterval)
 			{
-				Atack(player, enemy);
-				timeAtack = 0f;
+				Attack(player, enemy);
+				attackTimer = 0f;
 			}
+			return;
 		}
-		
-        
+
+		enemy.Velocity = enemy.Velocity.Lerp(Vector2.Zero, 12f * d);
+		attackTimer = 0f;
 	}
 
-	private void Atack(Player player, Enemy enemy)
-    {
-		player.SetLife(player.GetLife() - enemy.damage);
-    }
-
-
-	//ataque
-	public void _on_hit_box_atack_body_entered(Node2D body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-			atackT = true;
-        }
-    }
-
-	public void _on_hit_box_atack_body_exited(Node2D body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-			atackT = false;
-        }
-    }
-
-	public void _on_hit_box_check_atack_body_entered(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-			charging = true;
-        }
-    }
-	
-	public void _on_hit_box_check_atack_body_exited(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-			charging = false;
-        }
-    }
+	private void Attack(Player player, Enemy enemy)
+	{
+		player.TakeDamage(enemy.damage, enemy.GlobalPosition);
+	}
 }
-

@@ -5,80 +5,100 @@ using Interfaces;
 
 public partial class BurstBehavior : Node, IEnemyBehavior
 {
-
 	[Export] private CpuParticles2D ExplodePar;
 
-    private float explodeTime = 0f;
-    private bool charging = false;
+	private float explodeTime = 0f;
+	private bool charging = false;
+	private bool exploded = false;
 
-    [Export] private AnimatedSprite2D anim;
-    private const float explodeDelay = 0.65f;
-    private const float triggerDistance = 25f;
+	
+	private const float explodeDelay = 0.8f;
 
+	private const float stopDistance = 40f;
 
-    public override void _Ready()
-    {
-        anim.Visible = false;
-    }
+	private Vector2 normalScale = Vector2.One;
+	private Vector2 growScale = new Vector2(1.35f, 1.35f);
+	private float growSpeed = 6f;
 
+	public override void _Ready()
+	{
+		if (ExplodePar != null)
+			ExplodePar.Emitting = false;
+	}
 
-    public void Execute(Player player, Enemy enemy, double delta)
-    {
+	public void Execute(Player player, Enemy enemy, double delta)
+	{
+		if (exploded)
+			return;
 
-        Vector2 dir = (player.GlobalPosition - enemy.GlobalPosition).Normalized();
+		float d = (float)delta;
 
-        float distance = enemy.GlobalPosition.DistanceTo(player.GlobalPosition);
+		
+		if (enemy.Velocity.Length() > enemy.speed + 10f)
+		{
+			charging = false;
+			explodeTime = 0f;
+			enemy.Scale = enemy.Scale.Lerp(normalScale, growSpeed * d);
+			return;
+		}
 
-        if (!charging)
-        {
-            if (distance < 300)
-            {
-                enemy.Velocity = dir * enemy.speed;
-            }
-            else
-            {
-                enemy.Velocity = Vector2.Zero;
-            }
+		Vector2 toPlayer = player.GlobalPosition - enemy.GlobalPosition;
+		Vector2 dir = toPlayer.Normalized();
+		float distance = toPlayer.Length();
 
-            enemy.MoveAndSlide();
-        }
+		
+		if (!charging)
+		{
+			if (distance > stopDistance && distance < 300f)
+				enemy.Velocity = dir * enemy.speed;
+			else
+				enemy.Velocity = Vector2.Zero;
 
-        
-        if (distance < triggerDistance)
-        {
-            charging = true;
-        }
-        else
-        {
-            
-            charging = false;
-            explodeTime = 0f;
-        }
+			enemy.MoveAndSlide();
+		}
 
-       
-        if (charging)
-        {
-            explodeTime += (float)delta;
-            enemy.animt.Visible = false;
-            
-            enemy.Velocity = Vector2.Zero;
-			anim.Play("Atack");
-			if (anim.Animation == "Atack" && anim.Frame == 4 && explodeTime > 0.5f)
-        	{
-            	ExplodePar.Emitting = true;
-        	}
+		
+		if (distance <= stopDistance)
+			charging = true;
+		else
+		{
+			charging = false;
+			explodeTime = 0f;
+		}
 
-            if (explodeTime >= explodeDelay)
-            {
-    			anim.Visible = true;
-                Explode(player, enemy);
-            }
-        }
-    }
+		
+		if (charging)
+		{
+			enemy.Scale = enemy.Scale.Lerp(growScale, growSpeed * d);
 
-    private void Explode(Player player, Enemy enemy)
-    {
-        player.SetLife(player.GetLife() - enemy.damage);
-        enemy.QueueFree(); 
-    }
+			explodeTime += d;
+			enemy.Velocity = enemy.Velocity.Lerp(Vector2.Zero, 12f * d);
+
+			if (explodeTime >= explodeDelay)
+				Explode(enemy, player);
+		}
+		else
+		{
+			enemy.Scale = enemy.Scale.Lerp(normalScale, growSpeed * d);
+		}
+	}
+
+	private void Explode(Enemy enemy, Player player)
+	{
+		exploded = true;
+
+		player.TakeDamage(enemy.damage, enemy.GlobalPosition);
+
+		if (ExplodePar != null)
+		{
+			ExplodePar.Reparent(enemy.GetTree().CurrentScene);
+			ExplodePar.GlobalPosition = enemy.GlobalPosition;
+			ExplodePar.Emitting = true;
+		}
+
+		if (enemy.animt != null)
+			enemy.animt.Visible = false;
+
+		enemy.QueueFree();
+	}
 }
