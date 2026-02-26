@@ -10,9 +10,11 @@ public partial class BurstBehavior : Node, IEnemyBehavior
 	private float explodeTime = 0f;
 	private bool charging = false;
 	private bool exploded = false;
+	
+	
 
 	
-	private const float explodeDelay = 0.8f;
+	private const float explodeDelay = 0.6f;
 
 	private const float stopDistance = 40f;
 
@@ -30,6 +32,13 @@ public partial class BurstBehavior : Node, IEnemyBehavior
 	{
 		if (exploded)
 			return;
+
+
+		if (player == null || !GodotObject.IsInstanceValid(player))
+    	{
+        	enemy.Velocity = Vector2.Zero;
+        	return;
+    	}
 
 		float d = (float)delta;
 
@@ -75,7 +84,10 @@ public partial class BurstBehavior : Node, IEnemyBehavior
 			enemy.Velocity = enemy.Velocity.Lerp(Vector2.Zero, 12f * d);
 
 			if (explodeTime >= explodeDelay)
+			{
+				
 				Explode(enemy, player);
+			}	
 		}
 		else
 		{
@@ -86,7 +98,7 @@ public partial class BurstBehavior : Node, IEnemyBehavior
 	private void Explode(Enemy enemy, Player player)
 	{
 		exploded = true;
-
+		
 		player.TakeDamage(enemy.damage, enemy.GlobalPosition);
 
 		if (ExplodePar != null)

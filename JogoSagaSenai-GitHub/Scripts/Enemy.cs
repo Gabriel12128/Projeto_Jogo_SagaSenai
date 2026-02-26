@@ -7,11 +7,11 @@ namespace EnemyC
 {
 	public partial class Enemy : CharacterBody2D
 	{
+		[Export] private PackedScene coletavelScene;
+		[Export] private AudioStreamPlayer2D danoSom;
+		private bool droppedCollectavel = false;
 
-        [Export] private PackedScene coletavelScene;
-
-
-        private int life = 100;
+		private int life = 100;
 
 		public int damage { get; private set; } = 25;
 		public float speed { get; set; } = 50f;
@@ -54,20 +54,21 @@ namespace EnemyC
 		}
 
 		public override void _Process(double _delta)
-        {
-			if(life <= 25)
-				DropCollectavel();
-        }
-
-        public override void _PhysicsProcess(double delta)
 		{
+			if (life <= 0 && !droppedCollectavel)
+			{
+				droppedCollectavel = true;
+				DropCollectavel();
+				QueueFree();
+			}
+		}
 
-			
+		public override void _PhysicsProcess(double delta)
+		{
+			if (player == null || !GodotObject.IsInstanceValid(player))
+    			return;
 
-            if (player == null)
-				return;
-
-            float d = (float)delta;
+			float d = (float)delta;
 
 			if (behavior != null && knockbackVelocity == Vector2.Zero)
 				behavior.Execute(player, this, delta);
@@ -153,7 +154,8 @@ namespace EnemyC
 		{
 			if (damageCooldownTimer > 0f)
 				return;
-
+			
+			danoSom.Play();
 			damageCooldownTimer = damageCooldown;
 
 			life -= value;
@@ -166,8 +168,6 @@ namespace EnemyC
 
 			knockbackVelocity = dir * knockbackForce;
 
-                if(life <= 0)
-				    QueueFree();
 		}
 
 		private void UpdateDamageBlink(float delta)
@@ -177,7 +177,9 @@ namespace EnemyC
 
 			damageTimer -= delta;
 
-			float blink = Mathf.Abs(Mathf.Sin(Time.GetTicksMsec() * 0.001f * blinkSpeed));
+			float blink = Mathf.Abs(
+				Mathf.Sin(Time.GetTicksMsec() * 0.001f * blinkSpeed)
+			);
 
 			animt.Modulate = new Color(1f, 1f, 1f, 1f).Lerp(
 				new Color(2f, 2f, 2f, 1f),
@@ -209,20 +211,17 @@ namespace EnemyC
 				Mathf.Sin(animTime * Speed) * intencityWalk;
 		}
 
-        private void DropCollectavel()
-        {
-            if (coletavelScene == null)
-                return;
+		private void DropCollectavel()
+		{
+			if (coletavelScene == null)
+				return;
 
+			var coletavel = coletavelScene.Instantiate<Node2D>();
 
+			Node world = GetTree().CurrentScene;
 
-
-
-            var coletavel = coletavelScene.Instantiate<Node2D>();
-
-            GetParent().AddChild(coletavel);
-            coletavel.GlobalPosition = GlobalPosition;
-
-        }
-    }
+			world.AddChild(coletavel);
+			coletavel.GlobalPosition = GlobalPosition;
+		}
+	}
 }

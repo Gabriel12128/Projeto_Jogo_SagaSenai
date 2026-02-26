@@ -7,30 +7,28 @@ public partial class GameOver : CanvasLayer
 	[Export] private Button restartButton;
 	[Export] private ColorRect fundo;
 
-
 	public static GameOver instance;
-
 
 	public override void _Ready()
 	{
+		instance = this;
+
 		gameOverText.Visible = false;
 		restartButton.Visible = false;
 		fundo.Visible = false;
 
-		instance = this;
+		restartButton.Pressed += OnRetryPressed;
 	}
-
 
 	public void ShowGameOver()
 	{
-        gameOverText.Visible = true;
-        restartButton.Visible = true;
-        fundo.Visible = true;
-    }
+		gameOverText.Visible = true;
+		restartButton.Visible = true;
+		fundo.Visible = true;
+	}
 
-	public void _on_retry_pressed()
+	private void OnRetryPressed()
 	{
-		GD.Print("apertou");
-        GetTree().ReloadCurrentScene();
-    }
+		GetTree().ReloadCurrentScene();
+	}
 }

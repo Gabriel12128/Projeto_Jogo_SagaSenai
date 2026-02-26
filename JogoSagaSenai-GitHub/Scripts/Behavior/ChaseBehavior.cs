@@ -9,11 +9,20 @@ public partial class ChaseBehavior : Node, IEnemyBehavior
 	private float speedC = 90f;
 	private const float chaseDistance = 300f;
 	private const float stopDistance = 40f;
-	private const float attackInterval = 1f;
-
+	private const float attackInterval = 0.6f;
+	
+	
 	
 	public void Execute(Player player, Enemy enemy, double delta)
 	{
+
+		if (player == null || !GodotObject.IsInstanceValid(player))
+    	{
+        	enemy.Velocity = Vector2.Zero;
+        	return;
+    	}
+
+
 		float d = (float)delta;
 
 		enemy.speed = speedC;
@@ -39,6 +48,7 @@ public partial class ChaseBehavior : Node, IEnemyBehavior
 			if (attackTimer >= attackInterval)
 			{
 				Attack(player, enemy);
+				
 				attackTimer = 0f;
 			}
 			return;
@@ -50,6 +60,7 @@ public partial class ChaseBehavior : Node, IEnemyBehavior
 
 	private void Attack(Player player, Enemy enemy)
 	{
+		
 		player.TakeDamage(enemy.damage, enemy.GlobalPosition);
 	}
 }

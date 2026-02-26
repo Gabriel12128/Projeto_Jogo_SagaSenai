@@ -10,6 +10,7 @@ namespace PlayerC
 		private float coletaveis = 0;
         private int damage = 20;
 
+
 		private const float Speed = 250.0f;
 		private const float JumpDuration = 0.6f;
 		private const float JumpHeight = -30f;
@@ -39,6 +40,7 @@ namespace PlayerC
 		[Export] private CollisionShape2D hitBoxAtackIdle;
 		[Export] private CpuParticles2D walkPar;
 		[Export] private CpuParticles2D damagePar;
+		
 
 
 		enum PlayerState
@@ -119,6 +121,7 @@ namespace PlayerC
 		{
 			state = PlayerState.walk;
 			anim.Play("Walk");
+			
 		}
 
 		private void Go_To_Jump()
@@ -133,6 +136,7 @@ namespace PlayerC
 		{
 			state = PlayerState.atack_idle;
 			anim.Play("Atack_idle");
+			
 			timeAtackIdle = 0f;
 			hitBoxAtackIdle.Disabled = false;
 		}
@@ -141,6 +145,7 @@ namespace PlayerC
 		public void TakeDamage(int value, Vector2 enemyPosition)
 		{
 
+			
 			if (damagePar != null)
 			{
 				damagePar.Reparent(GetTree().CurrentScene);
@@ -227,7 +232,7 @@ namespace PlayerC
 		{
 			Vector2 input = InputMap();
 			ExitJumpSizeCollision();
-
+			
 			if (Input.IsActionJustPressed("jump"))
 			{
 				Go_To_Jump();
@@ -351,6 +356,15 @@ namespace PlayerC
             }
 				
         }
+
+		public void win()
+		{
+			if(coletaveis > 6)
+			{
+				if(Win.instance != null)
+					Win.instance.ShowWin();
+			}
+		}
 
 
         public void _on_hit_idle_body_entered(Node2D body)

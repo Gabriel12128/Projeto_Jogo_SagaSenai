@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://djgto1xinbbsw" path="res://Animations/Player_Idle.png" id="3_xd3k7"]
 [ext_resource type="Texture2D" uid="uid://d0mjs4xq60eat" path="res://Animations/Player_jump.png" id="4_taegk"]
 [ext_resource type="Texture2D" uid="uid://crxcpkteksotq" path="res://Animations/Player_run.png" id="5_prmdv"]
+[ext_resource type="AudioStream" uid="uid://bnhogcq1p564k" path="res://Audios/SomAtaque.mp3" id="6_prmdv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 radius = 6.0
@@ -139,9 +140,9 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 19.587524
+radius = 25.184082
 
-[node name="Player" type="CharacterBody2D" unique_id=436251967 node_paths=PackedStringArray("anim", "collision", "hitBoxAtackIdle", "walkPar", "damagePar") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=436251967 node_paths=PackedStringArray("anim", "collision", "hitBoxAtackIdle", "walkPar", "damagePar", "ataqueSom") groups=["Player"]]
 position = Vector2(392, 349)
 script = ExtResource("1_v0iea")
 anim = NodePath("Animations")
@@ -149,12 +150,15 @@ collision = NodePath("CollisionPlayer")
 hitBoxAtackIdle = NodePath("HitIdle/HitboxAtackIdle")
 walkPar = NodePath("WalkParticles")
 damagePar = NodePath("damageParticles")
+ataqueSom = NodePath("ataque")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1275480847]
+z_index = 5
 position = Vector2(183, -25)
 process_callback = 0
 limit_left = 0
 limit_top = 0
+limit_right = 4045
 limit_bottom = 648
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
@@ -175,7 +179,7 @@ frame_progress = 0.8544337
 [node name="HitIdle" type="Area2D" parent="." unique_id=1110110835]
 
 [node name="HitboxAtackIdle" type="CollisionShape2D" parent="HitIdle" unique_id=1595071784]
-position = Vector2(30, 13)
+position = Vector2(31, 13)
 scale = Vector2(0.3573689, 0.32000488)
 shape = SubResource("CircleShape2D_cvnsp")
 debug_color = Color(0.9999997, 0.0037052496, 0.08980254, 0.41960785)
@@ -209,5 +213,8 @@ gravity = Vector2(0, 900)
 initial_velocity_min = 200.0
 initial_velocity_max = 350.0
 color = Color(0, 0.50425696, 0.5053806, 1)
+
+[node name="ataque" type="AudioStreamPlayer2D" parent="." unique_id=322178077]
+stream = ExtResource("6_prmdv")
 
 [connection signal="body_entered" from="HitIdle" to="." method="_on_hit_idle_body_entered"]

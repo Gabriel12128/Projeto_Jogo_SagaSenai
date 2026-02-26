@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://dt0ijklinudcf" path="res://Scripts/Behavior/ChaseBehavior.cs" id="2_esmnh"]
 [ext_resource type="PackedScene" uid="uid://b1sbxm815oa4r" path="res://Entities/coletavel.tscn" id="2_jd2eq"]
 [ext_resource type="Texture2D" uid="uid://dh4p1r12hqrey" path="res://Sprites/Lata_vasia.png" id="2_rumbv"]
+[ext_resource type="AudioStream" uid="uid://bnhogcq1p564k" path="res://Audios/SomAtaque.mp3" id="5_jd2eq"]
+[ext_resource type="AudioStream" uid="uid://bo1khkpbidb73" path="res://Audios/SomDano.mp3" id="6_hvk1j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rumbv"]
 
-[node name="Enemy_2" type="CharacterBody2D" unique_id=1123409866 node_paths=PackedStringArray("behaviorNode", "animt")]
+[node name="Enemy_2" type="CharacterBody2D" unique_id=1123409866 node_paths=PackedStringArray("danoSom", "behaviorNode", "animt")]
 position = Vector2(333, 285)
 script = ExtResource("1_uhogk")
 coletavelScene = ExtResource("2_jd2eq")
+danoSom = NodePath("dano")
 behaviorNode = NodePath("ChaseBahavior")
 animt = NodePath("Animations")
 
@@ -21,5 +24,12 @@ shape = SubResource("CircleShape2D_rumbv")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_rumbv")
 
-[node name="ChaseBahavior" type="Node2D" parent="." unique_id=531128457]
+[node name="ChaseBahavior" type="Node2D" parent="." unique_id=531128457 node_paths=PackedStringArray("ataqueSom")]
 script = ExtResource("2_esmnh")
+ataqueSom = NodePath("../ataque")
+
+[node name="ataque" type="AudioStreamPlayer2D" parent="." unique_id=1623617477]
+stream = ExtResource("5_jd2eq")
+
+[node name="dano" type="AudioStreamPlayer2D" parent="." unique_id=1221640437]
+stream = ExtResource("6_hvk1j")

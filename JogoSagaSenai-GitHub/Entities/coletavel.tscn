@@ -5,9 +5,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rycys"]
 
-[node name="Coletavel" type="Area2D" unique_id=633509867 node_paths=PackedStringArray("spr")]
+[node name="Coletavel" type="Area2D" unique_id=633509867]
+z_index = 5
 script = ExtResource("1_rvno4")
-spr = NodePath("garrafa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1444736546]
 position = Vector2(0, 3)

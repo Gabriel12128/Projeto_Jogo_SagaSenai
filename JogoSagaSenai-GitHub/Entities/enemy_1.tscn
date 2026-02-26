@@ -4,15 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://b1sbxm815oa4r" path="res://Entities/coletavel.tscn" id="2_c71ah"]
 [ext_resource type="Texture2D" uid="uid://d1ype1heyrtxs" path="res://Sprites/Bolha_Suja.png" id="3_c71ah"]
 [ext_resource type="Script" uid="uid://81day1ap5fco" path="res://Scripts/Behavior/BurstBehavior.cs" id="4_c71ah"]
+[ext_resource type="AudioStream" uid="uid://bnhogcq1p564k" path="res://Audios/SomAtaque.mp3" id="5_ns1ty"]
+[ext_resource type="AudioStream" uid="uid://bo1khkpbidb73" path="res://Audios/SomDano.mp3" id="6_xf2mv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0a874"]
 radius = 13.0
 height = 26.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=542827059 node_paths=PackedStringArray("behaviorNode", "animt") groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=542827059 node_paths=PackedStringArray("danoSom", "behaviorNode", "animt") groups=["enemies"]]
 position = Vector2(542, 316)
 script = ExtResource("1_jwqgc")
 coletavelScene = ExtResource("2_c71ah")
+danoSom = NodePath("dano")
 behaviorNode = NodePath("BurstBehavior")
 animt = NodePath("Animation")
 
@@ -26,9 +29,10 @@ z_index = 1
 position = Vector2(-5, 9)
 texture = ExtResource("3_c71ah")
 
-[node name="BurstBehavior" type="Node2D" parent="." unique_id=1210630760 node_paths=PackedStringArray("ExplodePar")]
+[node name="BurstBehavior" type="Node2D" parent="." unique_id=1210630760 node_paths=PackedStringArray("ExplodePar", "ataqueSom")]
 script = ExtResource("4_c71ah")
 ExplodePar = NodePath("../AtackParticles")
+ataqueSom = NodePath("../ataque")
 
 [node name="AtackParticles" type="CPUParticles2D" parent="." unique_id=1130271639]
 position = Vector2(-6, 4)
@@ -44,3 +48,9 @@ initial_velocity_max = 350.0
 scale_amount_min = 5.0
 scale_amount_max = 5.0
 color = Color(0.30980393, 0.1764706, 0.23137255, 1)
+
+[node name="ataque" type="AudioStreamPlayer2D" parent="." unique_id=723847096]
+stream = ExtResource("5_ns1ty")
+
+[node name="dano" type="AudioStreamPlayer2D" parent="." unique_id=367328749]
+stream = ExtResource("6_xf2mv")

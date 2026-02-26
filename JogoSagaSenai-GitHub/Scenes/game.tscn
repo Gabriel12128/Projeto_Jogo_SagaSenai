@@ -1,45 +1,65 @@
 [gd_scene format=3 uid="uid://diybmo8jacfeb"]
 
-[ext_resource type="PackedScene" uid="uid://ixu2wblq46vt" path="res://Scenes/hud.tscn" id="4_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://ckk0pse87vto3" path="res://Entities/enemy_1.tscn" id="4_i6g32"]
-[ext_resource type="PackedScene" uid="uid://bu23oc575shsw" path="res://Entities/player.tscn" id="5_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://b1sbxm815oa4r" path="res://Entities/coletavel.tscn" id="5_i6g32"]
-[ext_resource type="PackedScene" uid="uid://cu53gs2ik1hg1" path="res://Scenes/game_over.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://df4rrsf4qakbs" path="res://Entities/enemy_2.tscn" id="7_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://dtkf68een6g6u" path="res://Sprites/fundo menu.jpeg" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://bb4m5vd8mmvmy" path="res://Scripts/Game.cs" id="1_qxrlw"]
+[ext_resource type="AudioStream" uid="uid://vde83eqvvvwa" path="res://Audios/SomMenuInicial.mp3" id="3_wrm1d"]
 
-[node name="Game" type="Node2D" unique_id=15225952]
+[node name="Game" type="Node2D" unique_id=15225952 node_paths=PackedStringArray("playButton", "exitButton")]
+script = ExtResource("1_qxrlw")
+playButton = NodePath("Control/play")
+exitButton = NodePath("Control/exit")
+gameScenePath = "res://Scenes/lvl_1.tscn"
 
-[node name="HUD" parent="." unique_id=594081560 instance=ExtResource("4_1l0tm")]
-
-[node name="Control" type="Control" parent="." unique_id=1352075840]
-visible = false
+[node name="Control" type="Control" parent="." unique_id=1959530710]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1844456419]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=472091339]
 layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 644.0
-color = Color(0.06550369, 0.035510633, 0.12455983, 1)
+offset_left = -117.0
+offset_top = -71.0
+offset_right = 1297.0
+offset_bottom = 713.0
+color = Color(0.15294118, 0.15294118, 0.15294118, 0.7019608)
 
-[node name="Enemy" parent="." unique_id=542827059 node_paths=PackedStringArray("player") instance=ExtResource("4_i6g32")]
-position = Vector2(659, 348)
-player = NodePath("../Player")
+[node name="PureDrop" type="Label" parent="Control" unique_id=746699218]
+layout_mode = 0
+offset_left = 361.00003
+offset_top = 118.0
+offset_right = 440.00003
+offset_bottom = 141.0
+scale = Vector2(5, 5)
+text = "Pure Drop"
 
-[node name="Player" parent="." unique_id=436251967 instance=ExtResource("5_1l0tm")]
+[node name="play" type="Button" parent="Control" unique_id=1845449728]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 307.0
+offset_right = 495.0
+offset_bottom = 338.0
+scale = Vector2(5, 2.3599997)
+text = "Play"
 
-[node name="Enemy_2" parent="." unique_id=1123409866 node_paths=PackedStringArray("player") instance=ExtResource("7_1l0tm")]
-player = NodePath("../Player")
+[node name="exit" type="Button" parent="Control" unique_id=66905232]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 420.00003
+offset_right = 495.0
+offset_bottom = 451.00003
+scale = Vector2(5, 2.3599997)
+text = "Exit"
 
-[node name="GameOver" parent="." unique_id=1176664571 instance=ExtResource("5_wowpa")]
+[node name="fundo" type="Sprite2D" parent="." unique_id=727981226]
+position = Vector2(575.5, 325)
+scale = Vector2(0.9117187, 0.9138889)
+texture = ExtResource("1_ebmjs")
 
-[node name="Coletavel" parent="." unique_id=633509867 instance=ExtResource("5_i6g32")]
-position = Vector2(846, 325)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=92943485]
+stream = ExtResource("3_wrm1d")
+autoplay = true
 
-[node name="Coletavel2" parent="." unique_id=1157691559 instance=ExtResource("5_i6g32")]
-position = Vector2(1002, 344)
-
-[node name="Coletavel3" parent="." unique_id=1697141070 instance=ExtResource("5_i6g32")]
-position = Vector2(846, 171)
+[connection signal="pressed" from="Control/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/exit" to="." method="_on_exit_pressed"]
