@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://b5gau8ydthqgk"]
+
+[ext_resource type="Script" uid="uid://drfg8jasj04h" path="res://Scripts/Player/Player.cs" id="1_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://ne62fvsq8jxy" path="res://Art/Player/PlayerBasic.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c88v486l62ogo" path="res://Art/Player/Idle/Player Idle 48x48.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://clywdivf0qkbe" path="res://Art/Player/basicsPlayer.png" id="4_fkybt"]
+[ext_resource type="Script" uid="uid://bbbwwitpd2x0h" path="res://Scripts/Player/Attack.cs" id="5_fkybt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
+size = Vector3(0.277, 0.445, 0.2)
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "Idle"
+length = 0.9
+loop_mode = 1
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v0iea")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 8, 32, 32), Rect2(56, 8, 32, 32), Rect2(104, 8, 32, 32), Rect2(152, 8, 32, 32), Rect2(200, 8, 32, 32), Rect2(248, 8, 32, 32), Rect2(296, 8, 32, 32), Rect2(344, 8, 32, 32), Rect2(392, 8, 32, 32), Rect2(440, 8, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_tx1dd"]
+resource_name = "Jump"
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fkybt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.101115786, 0.2014713, 0.299546, 0.4006618, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 296, 40, 40), Rect2(48, 296, 40, 40), Rect2(96, 296, 40, 40), Rect2(144, 296, 40, 40), Rect2(192, 296, 40, 40), Rect2(240, 296, 40, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_cvnsp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(8, 104, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "Walk"
+length = 0.7
+loop_mode = 1
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_cvnsp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10004495, 0.2000899, 0.30013487, 0.4001798, 0.50022477, 0.60058063, 0.69966364),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 104, 32, 32), Rect2(56, 104, 32, 32), Rect2(104, 104, 32, 32), Rect2(152, 104, 32, 32), Rect2(200, 104, 32, 32), Rect2(248, 104, 32, 32), Rect2(296, 104, 32, 32), Rect2(344, 104, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "attack1"
+length = 0.7
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fkybt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.103070006, 0.20288518, 0.30270034, 0.40030846, 0.49914342, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 64, 48, 32), Rect2(48, 64, 48, 32), Rect2(96, 64, 48, 32), Rect2(144, 64, 48, 32), Rect2(192, 64, 48, 32), Rect2(248, 64, 40, 32), Rect2(296, 64, 40, 32), Rect2(336, 64, 48, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_8erm5"]
+resource_name = "attack2"
+length = 0.8
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fkybt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 16, 40, 32), Rect2(56, 16, 40, 32), Rect2(104, 16, 40, 32), Rect2(152, 16, 32, 32), Rect2(248, 16, 32, 32), Rect2(288, 16, 40, 32), Rect2(336, 16, 40, 32), Rect2(384, 16, 40, 32), Rect2(432, 16, 40, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_f1ek2"]
+resource_name = "attack3"
+length = 0.6
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fkybt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.101115786, 0.2014713, 0.30030626, 0.40118903, 0.4985766, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 112, 48, 32), Rect2(48, 112, 48, 32), Rect2(104, 112, 40, 32), Rect2(144, 112, 48, 32), Rect2(192, 112, 48, 32), Rect2(240, 112, 48, 32), Rect2(288, 112, 48, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
+_data = {
+&"Idle": SubResource("Animation_vgqql"),
+&"Jump": SubResource("Animation_tx1dd"),
+&"RESET": SubResource("Animation_fkybt"),
+&"Walk": SubResource("Animation_x3wgy"),
+&"attack1": SubResource("Animation_3smsa"),
+&"attack2": SubResource("Animation_8erm5"),
+&"attack3": SubResource("Animation_f1ek2")
+}
+
+[sub_resource type="CSharpScript" id="CSharpScript_x3wgy"]
+script/source = "using Godot;
+using System;
+
+public partial class Movement : Node3D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_6t5aa")
+sprite = NodePath("sprite")
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=1910673315]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.24620432, 0)
+texture_filter = 0
+texture = ExtResource("1_cvnsp")
+region_enabled = true
+region_rect = Rect2(8, 104, 32, 32)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=150162319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.21954346, 0)
+shape = SubResource("BoxShape3D_6t5aa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1027710148]
+libraries/ = SubResource("AnimationLibrary_3smsa")
+autoplay = &"Idle"
+
+[node name="attack" type="Node3D" parent="." unique_id=48229268]
+script = ExtResource("5_fkybt")
+
+[node name="movement" type="Node3D" parent="." unique_id=1778492366]
+script = SubResource("CSharpScript_x3wgy")
