@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lm4b7vit27vl"]
 
-[ext_resource type="Texture2D" uid="uid://ctdysorxni3cf" path="res://Art/Cenarios/StreetScene.png" id="1_a085y"]
+[ext_resource type="Texture2D" uid="uid://d66tohv37qpq" path="res://Art/Cenarios/StreetBackground.png" id="1_ya3d7"]
 [ext_resource type="PackedScene" uid="uid://b5gau8ydthqgk" path="res://Scenes/player.tscn" id="2_ya3d7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a085y"]
@@ -33,7 +33,7 @@ shape = SubResource("ConcavePolygonShape3D_ya3d7")
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=977856477]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.7368355, -2.0978756)
 texture_filter = 0
-texture = ExtResource("1_a085y")
+texture = ExtResource("1_ya3d7")
 
 [node name="WallUp" type="MeshInstance3D" parent="." unique_id=1862551920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52168477)
