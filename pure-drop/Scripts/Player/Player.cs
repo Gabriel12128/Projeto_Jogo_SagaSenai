@@ -5,6 +5,8 @@ public partial class Player : CharacterBody3D
     [Export] private Sprite3D sprite;
     [Export] private AnimationPlayer animationPlayer;
 
+    [Export] private Sprite3D sombra;
+
     private Attack attack = new Attack();
     private Movement movement = new Movement();
 

@@ -41,7 +41,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_tx1dd"]
 resource_name = "Jump"
-length = 0.5
 step = 0.3333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -241,14 +240,15 @@ public partial class Movement : Node3D
 }
 "
 
-[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer")]
+[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer", "sombra")]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 script = ExtResource("1_6t5aa")
 sprite = NodePath("sprite")
 animationPlayer = NodePath("AnimationPlayer")
+sombra = NodePath("")
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=1910673315]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.24620432, 0)
+transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.1)
 texture_filter = 0
 texture = ExtResource("1_cvnsp")
 region_enabled = true
