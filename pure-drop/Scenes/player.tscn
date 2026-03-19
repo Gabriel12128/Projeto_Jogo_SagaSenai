@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c050ld7bpqgjl" path="res://Scripts/Player/Sombra.cs" id="7_3smsa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
-size = Vector3(0.277, 0.445, 0.2)
+size = Vector3(0.277, 0.24886718, 0.2)
 
 [sub_resource type="CSharpScript" id="CSharpScript_x3wgy"]
 script/source = "using Godot;
@@ -310,14 +310,14 @@ animationPlayer = NodePath("AnimationPlayer")
 knockbackForce = 6.0
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=1910673315]
-transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.1)
+transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.005)
 texture_filter = 0
 texture = ExtResource("1_cvnsp")
 region_enabled = true
 region_rect = Rect2(8, 104, 32, 32)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=150162319 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.21954346, 0)
+transform = Transform3D(0.6186167, 0, 0, 0, 1, 0, 0, 0, 0.2989105, -0.003479005, 0.1214771, 0)
 shape = SubResource("BoxShape3D_6t5aa")
 
 [node name="attack" type="Node3D" parent="." unique_id=48229268]
@@ -327,7 +327,7 @@ script = ExtResource("5_fkybt")
 script = SubResource("CSharpScript_x3wgy")
 
 [node name="sombra" type="Sprite3D" parent="." unique_id=2121758509 node_paths=PackedStringArray("player")]
-transform = Transform3D(1.5000006, 0, 0, 0, 1.5000006, 0, 0, 0, 1.5000006, -0.032435693, -0.029192397, 0)
+transform = Transform3D(1.5000006, 0, 0, 0, 1.5000006, 0, 0, 0, 1.5000006, -0.04458006, 0.022420254, 0)
 modulate = Color(1, 1, 1, 0.43529412)
 texture_filter = 0
 texture = ExtResource("6_x3wgy")

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b5gau8ydthqgk" path="res://Scenes/player.tscn" id="2_ya3d7"]
 [ext_resource type="Script" uid="uid://bl335vjxffq0l" path="res://Scripts/Player/CameraPlayer.cs" id="3_ala78"]
 [ext_resource type="PackedScene" uid="uid://x8udiodmgn52" path="res://Scenes/enemy_1.tscn" id="4_rqu5t"]
+[ext_resource type="PackedScene" uid="uid://bfuwkrisb7kw4" path="res://Scenes/barra_de_vida.tscn" id="5_5ka2t"]
+[ext_resource type="PackedScene" uid="uid://crl8i7evyo2y4" path="res://Scenes/vida.tscn" id="6_g5063"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a085y"]
 size = Vector2(50, 3)
@@ -77,3 +79,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.6763573, -0.022106886, 0)
 
 [node name="Enemy3" parent="." unique_id=790233960 groups=["enemy"] instance=ExtResource("4_rqu5t")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.0629683, 0, 0)
+
+[node name="BarraDeVida" parent="." unique_id=1633285863 instance=ExtResource("5_5ka2t")]
+
+[node name="Area3D" parent="." unique_id=89335144 instance=ExtResource("6_g5063")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.737453, -0.27210283, 3.164175)

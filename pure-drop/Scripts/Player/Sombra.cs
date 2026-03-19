@@ -3,10 +3,8 @@ using System;
 
 public partial class Sombra : Sprite3D
 {
-	  [Export] private Node3D player;
-
+	[Export] private Node3D player;
     private float groundY;
-
     public override void _Ready()
     {
         groundY = GlobalPosition.Y;

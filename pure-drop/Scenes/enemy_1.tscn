@@ -288,11 +288,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_arec4")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("sprite")
-attackDistance = 1.0
-attackCooldown = 0.8
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=823224653]
-transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.1)
+transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.005)
 texture_filter = 0
 texture = ExtResource("1_hmo6u")
 region_enabled = true
@@ -303,7 +301,7 @@ libraries/ = SubResource("AnimationLibrary_imqlt")
 autoplay = &"Idle"
 
 [node name="sombra" type="Sprite3D" parent="." unique_id=219507897 node_paths=PackedStringArray("player")]
-transform = Transform3D(1.5000007, 0, 0, 0, 1.5000007, 0, 0, 0, 1.5000007, -0.032435693, -0.36014462, 0)
+transform = Transform3D(1.5000007, 0, 0, 0, 1.5000007, 0, 0, 0, 1.5000007, -0.032435693, -0.32550472, 0)
 modulate = Color(1, 1, 1, 0.43529412)
 texture_filter = 0
 texture = ExtResource("4_ya6xy")
@@ -311,5 +309,5 @@ script = ExtResource("5_y27sj")
 player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=918816113 groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.037980955, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.31737912, -0.003479004, 0.037980955, 0)
 shape = SubResource("BoxShape3D_ybxfi")

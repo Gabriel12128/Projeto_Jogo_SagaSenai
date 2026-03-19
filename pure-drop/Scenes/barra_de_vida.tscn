@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bfuwkrisb7kw4"]
+
+[ext_resource type="Script" uid="uid://b638vjg742mpa" path="res://Scripts/Player/BarraDeVida.cs" id="1_nvb7p"]
+
+[sub_resource type="Gradient" id="Gradient_f5adc"]
+offsets = PackedFloat32Array(0, 0.9350649)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q3v1h"]
+gradient = SubResource("Gradient_f5adc")
+width = 291
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.98623854, 0.0091743115)
+
+[sub_resource type="Gradient" id="Gradient_3ih38"]
+offsets = PackedFloat32Array(0.11038961, 0.14935064, 0.9935065, 1)
+colors = PackedColorArray(0.09803922, 1, 0.09803922, 1, 0, 0, 0, 1, 0.6298701, 0.6298701, 0.6298701, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_typ2p"]
+gradient = SubResource("Gradient_3ih38")
+width = 293
+fill_from = Vector2(1, 0)
+
+[node name="BarraDeVida" type="Control" unique_id=1040198958]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=281335861]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1800110921]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 309.0
+offset_bottom = 83.0
+scale = Vector2(1, 0.44)
+max_value = 5.0
+value = 5.0
+texture_under = SubResource("GradientTexture2D_q3v1h")
+texture_progress = SubResource("GradientTexture2D_typ2p")
+tint_under = Color(1, 0, 0, 1)
+script = ExtResource("1_nvb7p")

@@ -1,6 +1,7 @@
 using Godot;
 using System.Threading.Tasks;
 
+
 public partial class Player : CharacterBody3D
 {
     [Export] private Sprite3D sprite;
@@ -9,7 +10,8 @@ public partial class Player : CharacterBody3D
     private Attack attack = new Attack();
     private Movement movement = new Movement();
 
-    [Export] private int vida = 5;
+    public int vidaMax = 5;
+    public int vida = 5;
 
     [Export] private float invencibilidadeTempo = 1.0f;
     [Export] private float blinkInterval = 0.1f;
@@ -22,9 +24,13 @@ public partial class Player : CharacterBody3D
 
     private Vector3 knockbackVelocity = Vector3.Zero;
 
+    private Area3D col;
+
     public override void _Ready()
     {
         AddToGroup("player");
+        col = GetNode<Area3D>("Area3D");
+        col.AreaEntered += OnAreaEntered;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -66,10 +72,6 @@ public partial class Player : CharacterBody3D
         MoveAndSlide();
     }
 
-    // =========================
-    // KNOCKBACK
-    // =========================
-
     private void ApplyKnockback(ref Vector3 velocity, float delta)
     {
         if (knockbackVelocity.Length() > 0.01f)
@@ -80,10 +82,6 @@ public partial class Player : CharacterBody3D
             knockbackVelocity = knockbackVelocity.MoveToward(Vector3.Zero, knockbackDecay * delta);
         }
     }
-
-    // =========================
-    // RECEBER DANO
-    // =========================
 
     public async void LevarDano(int dano, Vector3 direcao)
     {
@@ -120,10 +118,6 @@ public partial class Player : CharacterBody3D
         }
     }
 
-    // =========================
-    // BLINK
-    // =========================
-
     private async Task BlinkEffect()
     {
         float tempo = 0f;
@@ -148,5 +142,14 @@ public partial class Player : CharacterBody3D
         animationPlayer.Play("Death");
         SetProcess(false);
         SetPhysicsProcess(false);
+    }
+
+    private void OnAreaEntered(Area3D area)
+    {
+        if(area is IColetaveis coletavel)
+        {
+            GD.Print("encostou");
+            coletavel.Execute(this);
+        }
     }
 }
