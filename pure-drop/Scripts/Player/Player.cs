@@ -1,36 +1,152 @@
 using Godot;
+using System.Threading.Tasks;
 
 public partial class Player : CharacterBody3D
 {
     [Export] private Sprite3D sprite;
     [Export] private AnimationPlayer animationPlayer;
 
-    [Export] private Sprite3D sombra;
-
     private Attack attack = new Attack();
     private Movement movement = new Movement();
+
+    [Export] private int vida = 5;
+
+    [Export] private float invencibilidadeTempo = 1.0f;
+    [Export] private float blinkInterval = 0.1f;
+
+    [Export] private float knockbackForce = 8f;
+    [Export] private float knockbackDecay = 10f;
+
+    private bool tomandoDano = false;
+    private bool invencivel = false;
+
+    private Vector3 knockbackVelocity = Vector3.Zero;
+
+    public override void _Ready()
+    {
+        AddToGroup("player");
+    }
 
     public override void _PhysicsProcess(double delta)
     {
         Vector3 velocity = Velocity;
 
         movement.ApplyGravity(ref velocity, delta, this);
-        movement.HandleJump(ref velocity, this, attack.EstaAtacando);
 
-        movement.HandleMovement(
-            ref velocity,
-            animationPlayer,
-            sprite,
-            this,
-            attack.EstaAtacando
-        );
+        // aplica knockback
+        ApplyKnockback(ref velocity, (float)delta);
 
-        if (Input.IsActionJustPressed("ataque"))
+        bool travado = attack.EstaAtacando || tomandoDano || knockbackVelocity.Length() > 0.1f;
+
+        if (!travado)
         {
-            _ = attack.AttackPlayer(animationPlayer);
+            movement.HandleJump(ref velocity, this, false);
+
+            movement.HandleMovement(
+                ref velocity,
+                animationPlayer,
+                sprite,
+                this,
+                false
+            );
+        }
+        else
+        {
+            // trava movimento durante knockback/ataque/dano
+            velocity.X = knockbackVelocity.X;
+            velocity.Z = knockbackVelocity.Z;
+        }
+
+        if (Input.IsActionJustPressed("ataque") && !tomandoDano)
+        {
+            _ = attack.AttackPlayer(animationPlayer, this);
         }
 
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    // =========================
+    // KNOCKBACK
+    // =========================
+
+    private void ApplyKnockback(ref Vector3 velocity, float delta)
+    {
+        if (knockbackVelocity.Length() > 0.01f)
+        {
+            velocity.X = knockbackVelocity.X;
+            velocity.Z = knockbackVelocity.Z;
+
+            knockbackVelocity = knockbackVelocity.MoveToward(Vector3.Zero, knockbackDecay * delta);
+        }
+    }
+
+    // =========================
+    // RECEBER DANO
+    // =========================
+
+    public async void LevarDano(int dano, Vector3 direcao)
+    {
+        if (invencivel) return;
+
+        vida -= dano;
+
+        tomandoDano = true;
+        invencivel = true;
+
+        // empurrão
+        knockbackVelocity = direcao * knockbackForce;
+
+        animationPlayer.Play("Hit");
+
+        _ = BlinkEffect();
+
+        await animationPlayer.ToSignal(
+            animationPlayer,
+            AnimationPlayer.SignalName.AnimationFinished
+        );
+
+        tomandoDano = false;
+
+        await ToSignal(GetTree().CreateTimer(invencibilidadeTempo), "timeout");
+
+        invencivel = false;
+
+        sprite.Visible = true;
+
+        if (vida <= 0)
+        {
+            Morrer();
+        }
+    }
+
+    // =========================
+    // BLINK
+    // =========================
+
+    private async Task BlinkEffect()
+    {
+        float tempo = 0f;
+
+        while (invencivel)
+        {
+            sprite.Visible = !sprite.Visible;
+
+            await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
+
+            tempo += blinkInterval;
+
+            if (tempo >= invencibilidadeTempo)
+                break;
+        }
+
+        sprite.Visible = true;
+    }
+
+    private void Morrer()
+    {
+        animationPlayer.Play("Death");
+        SetProcess(false);
+        SetPhysicsProcess(false);
     }
 }

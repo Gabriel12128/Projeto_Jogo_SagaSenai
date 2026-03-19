@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d66tohv37qpq" path="res://Art/Cenarios/StreetBackground.png" id="1_ya3d7"]
 [ext_resource type="PackedScene" uid="uid://b5gau8ydthqgk" path="res://Scenes/player.tscn" id="2_ya3d7"]
 [ext_resource type="Script" uid="uid://bl335vjxffq0l" path="res://Scripts/Player/CameraPlayer.cs" id="3_ala78"]
+[ext_resource type="PackedScene" uid="uid://x8udiodmgn52" path="res://Scenes/enemy_1.tscn" id="4_rqu5t"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a085y"]
 size = Vector2(50, 3)
@@ -68,3 +69,11 @@ script = ExtResource("3_ala78")
 player = NodePath("../Player")
 minX = -17.0
 maxX = 100.0
+
+[node name="Enemy1" parent="." unique_id=2130247876 groups=["enemy"] instance=ExtResource("4_rqu5t")]
+
+[node name="Enemy2" parent="." unique_id=129472980 groups=["enemy"] instance=ExtResource("4_rqu5t")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.6763573, -0.022106886, 0)
+
+[node name="Enemy3" parent="." unique_id=790233960 groups=["enemy"] instance=ExtResource("4_rqu5t")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.0629683, 0, 0)

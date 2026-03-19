@@ -1,33 +1,11 @@
-[gd_scene format=3 uid="uid://b5gau8ydthqgk"]
+[gd_scene format=3 uid="uid://x8udiodmgn52"]
 
-[ext_resource type="Script" uid="uid://drfg8jasj04h" path="res://Scripts/Player/Player.cs" id="1_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://ne62fvsq8jxy" path="res://Art/Player/PlayerBasic.png" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://c88v486l62ogo" path="res://Art/Player/Idle/Player Idle 48x48.png" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://clywdivf0qkbe" path="res://Art/Player/basicsPlayer.png" id="4_fkybt"]
-[ext_resource type="Script" uid="uid://bbbwwitpd2x0h" path="res://Scripts/Player/Attack.cs" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://c7qvk01fs7cem" path="res://Art/Player/Idle/sombraPlayer.png" id="6_x3wgy"]
-[ext_resource type="Script" uid="uid://c050ld7bpqgjl" path="res://Scripts/Player/Sombra.cs" id="7_3smsa"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
-size = Vector3(0.277, 0.445, 0.2)
-
-[sub_resource type="CSharpScript" id="CSharpScript_x3wgy"]
-script/source = "using Godot;
-using System;
-
-public partial class Movement : Node3D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-}
-"
+[ext_resource type="Script" uid="uid://dcj46xs0t2ro" path="res://Scripts/Enemy1/Scripts/Enemy1.cs" id="1_arec4"]
+[ext_resource type="Texture2D" uid="uid://ne62fvsq8jxy" path="res://Art/Player/PlayerBasic.png" id="1_hmo6u"]
+[ext_resource type="Texture2D" uid="uid://c88v486l62ogo" path="res://Art/Player/Idle/Player Idle 48x48.png" id="2_arec4"]
+[ext_resource type="Texture2D" uid="uid://clywdivf0qkbe" path="res://Art/Player/basicsPlayer.png" id="3_v73nf"]
+[ext_resource type="Texture2D" uid="uid://c7qvk01fs7cem" path="res://Art/Player/Idle/sombraPlayer.png" id="4_ya6xy"]
+[ext_resource type="Script" uid="uid://c050ld7bpqgjl" path="res://Scripts/Player/Sombra.cs" id="5_y27sj"]
 
 [sub_resource type="Animation" id="Animation_arec4"]
 resource_name = "Death"
@@ -43,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -72,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +80,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_v0iea")]
+"values": [ExtResource("2_arec4")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -130,7 +108,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -157,7 +135,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_cvnsp")]
+"values": [ExtResource("1_hmo6u")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -187,7 +165,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_cvnsp")]
+"values": [ExtResource("1_hmo6u")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -216,7 +194,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -245,7 +223,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -274,7 +252,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fkybt")]
+"values": [ExtResource("3_v73nf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -289,7 +267,7 @@ tracks/1/keys = {
 "values": [Rect2(0, 112, 48, 32), Rect2(48, 112, 48, 32), Rect2(104, 112, 40, 32), Rect2(144, 112, 48, 32), Rect2(192, 112, 48, 32), Rect2(240, 112, 48, 32), Rect2(288, 112, 48, 32)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imqlt"]
 _data = {
 &"Death": SubResource("Animation_arec4"),
 &"Hit": SubResource("Animation_v73nf"),
@@ -302,38 +280,36 @@ _data = {
 &"attack3": SubResource("Animation_f1ek2")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer") groups=["player"]]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
-script = ExtResource("1_6t5aa")
-sprite = NodePath("sprite")
-animationPlayer = NodePath("AnimationPlayer")
-knockbackForce = 6.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybxfi"]
+size = Vector3(0.277, 0.081875, 0.2)
 
-[node name="sprite" type="Sprite3D" parent="." unique_id=1910673315]
+[node name="Enemy1" type="CharacterBody3D" unique_id=2130247876 node_paths=PackedStringArray("animationPlayer", "sprite")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_arec4")
+animationPlayer = NodePath("AnimationPlayer")
+sprite = NodePath("sprite")
+attackDistance = 1.0
+attackCooldown = 0.8
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=823224653]
 transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.1)
 texture_filter = 0
-texture = ExtResource("1_cvnsp")
+texture = ExtResource("1_hmo6u")
 region_enabled = true
 region_rect = Rect2(8, 104, 32, 32)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=150162319 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.21954346, 0)
-shape = SubResource("BoxShape3D_6t5aa")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=332887822]
+libraries/ = SubResource("AnimationLibrary_imqlt")
+autoplay = &"Idle"
 
-[node name="attack" type="Node3D" parent="." unique_id=48229268]
-script = ExtResource("5_fkybt")
-
-[node name="movement" type="Node3D" parent="." unique_id=1778492366]
-script = SubResource("CSharpScript_x3wgy")
-
-[node name="sombra" type="Sprite3D" parent="." unique_id=2121758509 node_paths=PackedStringArray("player")]
-transform = Transform3D(1.5000006, 0, 0, 0, 1.5000006, 0, 0, 0, 1.5000006, -0.032435693, -0.029192397, 0)
+[node name="sombra" type="Sprite3D" parent="." unique_id=219507897 node_paths=PackedStringArray("player")]
+transform = Transform3D(1.5000007, 0, 0, 0, 1.5000007, 0, 0, 0, 1.5000007, -0.032435693, -0.36014462, 0)
 modulate = Color(1, 1, 1, 0.43529412)
 texture_filter = 0
-texture = ExtResource("6_x3wgy")
-script = ExtResource("7_3smsa")
+texture = ExtResource("4_ya6xy")
+script = ExtResource("5_y27sj")
 player = NodePath("..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1549589210]
-libraries/ = SubResource("AnimationLibrary_3smsa")
-autoplay = &"Idle"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=918816113 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, 0.037980955, 0)
+shape = SubResource("BoxShape3D_ybxfi")
