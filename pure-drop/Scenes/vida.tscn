@@ -1,21 +1,19 @@
 [gd_scene format=3 uid="uid://crl8i7evyo2y4"]
 
 [ext_resource type="Script" uid="uid://bna1uel7vq3r8" path="res://Scripts/Coletaveis/Vida.cs" id="1_7k7g6"]
+[ext_resource type="Texture2D" uid="uid://cigm3b4hk31y1" path="res://Art/Coletavel/garrafa.png" id="2_rkl5y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2wy1"]
-size = Vector3(1.84021, 1.8989258, 1)
+size = Vector3(0.6113739, 0.7943115, 1)
 
-[sub_resource type="Gradient" id="Gradient_7k7g6"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkl5y"]
-gradient = SubResource("Gradient_7k7g6")
-
-[node name="Area3D" type="Area3D" unique_id=89335144]
+[node name="Vida" type="Area3D" unique_id=89335144 groups=["coletavel"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_7k7g6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=676895716]
-transform = Transform3D(0.32802135, 0, 0, 0, 0.33320266, 0, 0, 0, 0.26267698, 0.0074277297, 0.0047995523, 0)
+transform = Transform3D(0.411, 0, 0, 0, 0.417, 0, 0, 0, 0.33, 0.0030409042, -0.015281808, 0)
 shape = SubResource("BoxShape3D_w2wy1")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=516291945]
-texture = SubResource("GradientTexture2D_rkl5y")
+texture_filter = 0
+texture = ExtResource("2_rkl5y")

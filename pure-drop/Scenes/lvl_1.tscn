@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bpbjmcwiceyv5"]
 
 [ext_resource type="Texture2D" uid="uid://d66tohv37qpq" path="res://Art/Cenarios/StreetBackground.png" id="1_qjdxc"]
-[ext_resource type="Script" uid="uid://bl335vjxffq0l" path="res://Scripts/Player/CameraPlayer.cs" id="2_671ag"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_671ag"]
 size = Vector2(50, 3)
@@ -54,13 +53,3 @@ mesh = SubResource("BoxMesh_olvls")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallDown/StaticBody3D" unique_id=1246917108]
 shape = SubResource("ConcavePolygonShape3D_34tpy")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1201786474 node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837112, 0, -0.43837112, 0.89879405, -17.647171, 3.5000002, 7.565008)
-projection = 1
-current = true
-size = 6.0
-script = ExtResource("2_671ag")
-player = NodePath("")
-minX = -17.0
-maxX = 100.0

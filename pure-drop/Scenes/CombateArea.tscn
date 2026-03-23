@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b8h6dpumfffei"]
+
+[ext_resource type="Script" uid="uid://df8dea31ja8bm" path="res://Scripts/Enemy1/CombateArea.cs" id="1_kb7ge"]
+[ext_resource type="PackedScene" uid="uid://x8udiodmgn52" path="res://Scenes/enemy_1.tscn" id="2_6g8wp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6g8wp"]
+size = Vector3(0.2767334, 5.411255, 8.630188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t74b5"]
+size = Vector3(0.21411133, 5.9588623, 9.155762)
+
+[node name="AreaManager" type="Node3D" unique_id=1326948429 node_paths=PackedStringArray("leftWall", "rightWall", "spawnLeft", "spawnRight")]
+script = ExtResource("1_kb7ge")
+enemyScene = ExtResource("2_6g8wp")
+leftWall = NodePath("paredeEsquerda")
+rightWall = NodePath("paredeDireita")
+spawnLeft = NodePath("Points/Spown2")
+spawnRight = NodePath("Points/Spown")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=1370909653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2717476, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1976431800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.627468, 1.6435844, 3.815094)
+shape = SubResource("BoxShape3D_6g8wp")
+
+[node name="paredeEsquerda" type="StaticBody3D" parent="." unique_id=1854206223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.331427, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="paredeEsquerda" unique_id=2147343946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.822, 4.078)
+shape = SubResource("BoxShape3D_t74b5")
+
+[node name="paredeDireita" type="StaticBody3D" parent="." unique_id=1198390971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.331, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="paredeDireita" unique_id=1384730597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.822, 4.078)
+shape = SubResource("BoxShape3D_t74b5")
+
+[node name="Points" type="Node3D" parent="." unique_id=394673101]
+
+[node name="Spown" type="Marker3D" parent="Points" unique_id=1093526898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.064848, 1.0589304, 3.954218)
+
+[node name="Spown2" type="Marker3D" parent="Points" unique_id=2090308541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.850646, 1.0589304, 3.954218)

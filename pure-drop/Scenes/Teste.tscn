@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d66tohv37qpq" path="res://Art/Cenarios/StreetBackground.png" id="1_ya3d7"]
 [ext_resource type="PackedScene" uid="uid://b5gau8ydthqgk" path="res://Scenes/player.tscn" id="2_ya3d7"]
 [ext_resource type="Script" uid="uid://bl335vjxffq0l" path="res://Scripts/Player/CameraPlayer.cs" id="3_ala78"]
-[ext_resource type="PackedScene" uid="uid://x8udiodmgn52" path="res://Scenes/enemy_1.tscn" id="4_rqu5t"]
-[ext_resource type="PackedScene" uid="uid://bfuwkrisb7kw4" path="res://Scenes/barra_de_vida.tscn" id="5_5ka2t"]
+[ext_resource type="PackedScene" uid="uid://b8h6dpumfffei" path="res://Scenes/CombateArea.tscn" id="5_5ka2t"]
 [ext_resource type="PackedScene" uid="uid://crl8i7evyo2y4" path="res://Scenes/vida.tscn" id="6_g5063"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a085y"]
@@ -22,42 +21,7 @@ data = PackedVector3Array(-25, 1, 0.049999997, 25, 1, 0.049999997, -25, -1, 0.04
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rqu5t"]
 data = PackedVector3Array(-25, 1, 0.049999997, 25, 1, 0.049999997, -25, -1, 0.049999997, 25, 1, 0.049999997, 25, -1, 0.049999997, -25, -1, 0.049999997, 25, 1, -0.049999997, -25, 1, -0.049999997, 25, -1, -0.049999997, -25, 1, -0.049999997, -25, -1, -0.049999997, 25, -1, -0.049999997, 25, 1, 0.049999997, 25, 1, -0.049999997, 25, -1, 0.049999997, 25, 1, -0.049999997, 25, -1, -0.049999997, 25, -1, 0.049999997, -25, 1, -0.049999997, -25, 1, 0.049999997, -25, -1, -0.049999997, -25, 1, 0.049999997, -25, -1, 0.049999997, -25, -1, -0.049999997, 25, 1, 0.049999997, -25, 1, 0.049999997, 25, 1, -0.049999997, -25, 1, 0.049999997, -25, 1, -0.049999997, 25, 1, -0.049999997, -25, -1, 0.049999997, 25, -1, 0.049999997, -25, -1, -0.049999997, 25, -1, 0.049999997, 25, -1, -0.049999997, -25, -1, -0.049999997)
 
-[node name="lvl_1" type="Node3D" unique_id=809734701]
-
-[node name="Ground" type="MeshInstance3D" parent="." unique_id=516447688]
-transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0, -0.9408684, 2.5656781)
-visible = false
-mesh = SubResource("QuadMesh_a085y")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1152842883]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=1177250747]
-shape = SubResource("ConcavePolygonShape3D_ya3d7")
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=977856477]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.7368355, -2.0978756)
-texture_filter = 0
-texture = ExtResource("1_ya3d7")
-
-[node name="WallUp" type="MeshInstance3D" parent="." unique_id=1862551920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52168477)
-visible = false
-mesh = SubResource("BoxMesh_ala78")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="WallUp" unique_id=465201806]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp/StaticBody3D" unique_id=371883951]
-shape = SubResource("ConcavePolygonShape3D_ala78")
-
-[node name="WallDown" type="MeshInstance3D" parent="." unique_id=1718755859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.7286987)
-visible = false
-mesh = SubResource("BoxMesh_ala78")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="WallDown" unique_id=1761627671]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDown/StaticBody3D" unique_id=1148358032]
-shape = SubResource("ConcavePolygonShape3D_rqu5t")
+[node name="teste" type="Node3D" unique_id=809734701]
 
 [node name="Player" parent="." unique_id=1515509810 instance=ExtResource("2_ya3d7")]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -18.514341, -1.0423033, 2.7982197)
@@ -72,15 +36,49 @@ player = NodePath("../Player")
 minX = -17.0
 maxX = 100.0
 
-[node name="Enemy1" parent="." unique_id=2130247876 groups=["enemy"] instance=ExtResource("4_rqu5t")]
+[node name="ColisoesCenario" type="Node" parent="." unique_id=2016339673]
 
-[node name="Enemy2" parent="." unique_id=129472980 groups=["enemy"] instance=ExtResource("4_rqu5t")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.6763573, -0.022106886, 0)
+[node name="Ground" type="MeshInstance3D" parent="ColisoesCenario" unique_id=516447688]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0, -0.9408684, 2.5656781)
+visible = false
+mesh = SubResource("QuadMesh_a085y")
 
-[node name="Enemy3" parent="." unique_id=790233960 groups=["enemy"] instance=ExtResource("4_rqu5t")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.0629683, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="ColisoesCenario/Ground" unique_id=1152842883]
+collision_mask = 0
 
-[node name="BarraDeVida" parent="." unique_id=1633285863 instance=ExtResource("5_5ka2t")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColisoesCenario/Ground/StaticBody3D" unique_id=1177250747]
+shape = SubResource("ConcavePolygonShape3D_ya3d7")
 
-[node name="Area3D" parent="." unique_id=89335144 instance=ExtResource("6_g5063")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.737453, -0.27210283, 3.164175)
+[node name="Sprite3D" type="Sprite3D" parent="ColisoesCenario" unique_id=977856477]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.7368355, -2.0978756)
+texture_filter = 0
+texture = ExtResource("1_ya3d7")
+
+[node name="WallUp" type="MeshInstance3D" parent="ColisoesCenario" unique_id=1862551920]
+transform = Transform3D(1, 0, 0, 0, 2.721539, 0, 0, 0, 1, 0, 0, -0.52168477)
+visible = false
+mesh = SubResource("BoxMesh_ala78")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ColisoesCenario/WallUp" unique_id=465201806]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColisoesCenario/WallUp/StaticBody3D" unique_id=371883951]
+shape = SubResource("ConcavePolygonShape3D_ala78")
+
+[node name="WallDown" type="MeshInstance3D" parent="ColisoesCenario" unique_id=1718755859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.7286987)
+visible = false
+mesh = SubResource("BoxMesh_ala78")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ColisoesCenario/WallDown" unique_id=1761627671]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColisoesCenario/WallDown/StaticBody3D" unique_id=1148358032]
+shape = SubResource("ConcavePolygonShape3D_rqu5t")
+
+[node name="Vida" parent="." unique_id=89335144 instance=ExtResource("6_g5063")]
+transform = Transform3D(0.99993443, 0.011440838, -0.00050827465, -0.011437513, 0.99991584, 0.0061233486, 0.00057826634, -0.0061171358, 0.99998116, -14.374386, -0.50569916, 3.1447883)
+
+[node name="AreaManager" parent="." unique_id=1326948429 node_paths=PackedStringArray("cameraNode") instance=ExtResource("5_5ka2t")]
+totalEnemies = 2
+cameraNode = NodePath("../Camera3D")

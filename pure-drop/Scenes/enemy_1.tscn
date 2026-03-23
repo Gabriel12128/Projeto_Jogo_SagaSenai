@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcj46xs0t2ro" path="res://Scripts/Enemy1/Scripts/Enemy1.cs" id="1_arec4"]
 [ext_resource type="Texture2D" uid="uid://ne62fvsq8jxy" path="res://Art/Player/PlayerBasic.png" id="1_hmo6u"]
 [ext_resource type="Texture2D" uid="uid://c88v486l62ogo" path="res://Art/Player/Idle/Player Idle 48x48.png" id="2_arec4"]
+[ext_resource type="PackedScene" uid="uid://ncece0fg882q" path="res://Scenes/lixo.tscn" id="2_v73nf"]
 [ext_resource type="Texture2D" uid="uid://clywdivf0qkbe" path="res://Art/Player/basicsPlayer.png" id="3_v73nf"]
 [ext_resource type="Texture2D" uid="uid://c7qvk01fs7cem" path="res://Art/Player/Idle/sombraPlayer.png" id="4_ya6xy"]
 [ext_resource type="Script" uid="uid://c050ld7bpqgjl" path="res://Scripts/Player/Sombra.cs" id="5_y27sj"]
@@ -281,13 +282,20 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybxfi"]
-size = Vector3(0.277, 0.081875, 0.2)
+size = Vector3(0.18985547, 0.4034033, 0.2)
 
 [node name="Enemy1" type="CharacterBody3D" unique_id=2130247876 node_paths=PackedStringArray("animationPlayer", "sprite")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_arec4")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("sprite")
+itemColetavel = ExtResource("2_v73nf")
+attackDistance = 1.2
+attackCooldown = 0.4
+separationForce = 1.0
+knockbackForce = 4.0
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=823224653]
 transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.005)
@@ -309,5 +317,5 @@ script = ExtResource("5_y27sj")
 player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=918816113 groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.31737912, -0.003479004, 0.037980955, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.31737912, -0.001727052, 0.19874512, 0)
 shape = SubResource("BoxShape3D_ybxfi")

@@ -3,25 +3,46 @@ using System;
 
 public partial class CameraPlayer : Camera3D
 {
-	
-	public override void _Ready()
-	{
-	}
+    [Export] private Node3D player;
+    [Export] private float minX = -7.5f;
+    [Export] private float maxX = 7.5f;
+    
+    // Velocidade do deslize (Aumente para ser mais rápido, diminua para mais lento)
+    [Export] private float suavidadeTransicao = 4.0f; 
 
-	[Export] private Node3D player;
+    private bool isLocked = false;
+    private float lockedX = 0f;
 
-	[Export] private float minX = -7.5f;
-	[Export] private float maxX = 7.5f;
+    public void SetLock(bool shouldLock, float targetX = 0)
+    {
+        isLocked = shouldLock;
+        if (shouldLock)
+        {
+            lockedX = targetX;
+        }
+    }
 
-	public override void _Process(double delta)
-	{
-		Vector3 pos = GlobalPosition;
+    public override void _Process(double delta)
+    {
+        if (player == null) return;
 
-		float targetX = player.GlobalPosition.X;
+        Vector3 pos = GlobalPosition;
+        float targetX;
 
-		pos.X = Mathf.Clamp(targetX, minX, maxX);
+        if (isLocked)
+        {
+            // O alvo é o centro da arena
+            targetX = lockedX;
+        }
+        else
+        {
+            // O alvo é a posição do player (com os limites de Clamp)
+            targetX = Mathf.Clamp(player.GlobalPosition.X, minX, maxX);
+        }
 
-		
-	   GlobalPosition = pos;
-	}
+        // Aplica o Lerp constantemente para garantir suavidade na ida e na volta
+        pos.X = Mathf.Lerp(pos.X, targetX, (float)delta * suavidadeTransicao);
+        
+        GlobalPosition = pos;
+    }
 }

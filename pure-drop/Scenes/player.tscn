@@ -7,9 +7,16 @@
 [ext_resource type="Script" uid="uid://bbbwwitpd2x0h" path="res://Scripts/Player/Attack.cs" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://c7qvk01fs7cem" path="res://Art/Player/Idle/sombraPlayer.png" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://c050ld7bpqgjl" path="res://Scripts/Player/Sombra.cs" id="7_3smsa"]
+[ext_resource type="PackedScene" uid="uid://bfuwkrisb7kw4" path="res://Scenes/barra_de_vida.tscn" id="8_8erm5"]
+[ext_resource type="PackedScene" uid="uid://c7ewwd3cwff2v" path="res://Scenes/barra_de_puresa.tscn" id="9_f1ek2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
 size = Vector3(0.277, 0.24886718, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8erm5"]
+size = Vector3(0.18795776, 0.2989502, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1ek2"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_x3wgy"]
 script/source = "using Godot;
@@ -302,12 +309,15 @@ _data = {
 &"attack3": SubResource("Animation_f1ek2")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1515509810 node_paths=PackedStringArray("sprite", "animationPlayer", "col") groups=["player"]]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_6t5aa")
 sprite = NodePath("sprite")
 animationPlayer = NodePath("AnimationPlayer")
 knockbackForce = 6.0
+col = NodePath("detecçãoDeColetaveis")
 
 [node name="sprite" type="Sprite3D" parent="." unique_id=1910673315]
 transform = Transform3D(1.5000005, 0, 0, 0, 1.5000005, 0, 0, 0, 1.5000005, 0, 0.246, 0.005)
@@ -320,8 +330,32 @@ region_rect = Rect2(8, 104, 32, 32)
 transform = Transform3D(0.6186167, 0, 0, 0, 1, 0, 0, 0, 0.2989105, -0.003479005, 0.1214771, 0)
 shape = SubResource("BoxShape3D_6t5aa")
 
-[node name="attack" type="Node3D" parent="." unique_id=48229268]
+[node name="detecçãoDeColetaveis" type="Area3D" parent="." unique_id=2119512692]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detecçãoDeColetaveis" unique_id=667198414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.084223576, -0.0028533596, 0.13616942, 0)
+shape = SubResource("BoxShape3D_8erm5")
+
+[node name="detectaveis" type="Node" parent="." unique_id=280143932]
+
+[node name="HitBox" type="Area3D" parent="detectaveis" unique_id=899041575]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.94126296, 0.97679055, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detectaveis/HitBox" unique_id=699408870]
+shape = SubResource("BoxShape3D_f1ek2")
+
+[node name="hud" type="Node" parent="." unique_id=285936230]
+
+[node name="BarraDeVida" parent="hud" unique_id=1040198958 instance=ExtResource("8_8erm5")]
+
+[node name="BarraDePuresa" parent="hud" unique_id=583342557 instance=ExtResource("9_f1ek2")]
+
+[node name="attack" type="Node3D" parent="." unique_id=48229268 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("5_fkybt")
+hitTime = null
+dano = null
+depthLimit = null
+hitbox = NodePath("../detectaveis/HitBox")
 
 [node name="movement" type="Node3D" parent="." unique_id=1778492366]
 script = SubResource("CSharpScript_x3wgy")

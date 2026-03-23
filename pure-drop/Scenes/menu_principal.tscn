@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://clvw34jsho20w"]
+
+[ext_resource type="Shader" uid="uid://mxw2a5oh8go2" path="res://Scenes/menu_principal.gdshader" id="1_crked"]
+[ext_resource type="Texture2D" uid="uid://b752fpll0lfm4" path="res://Art/personagem.png" id="2_y4xp8"]
+[ext_resource type="Texture2D" uid="uid://cx2ub6slvakyn" path="res://Art/Coletavel/logo.png" id="3_y4xp8"]
+[ext_resource type="Texture2D" uid="uid://dpdpfnbu4xsw3" path="res://Art/logoSenai.png" id="4_xe6lt"]
+[ext_resource type="FontFile" uid="uid://dn13yioxko185" path="res://Art/fonts/gamesome/Gamesome-Personal-Used.ttf" id="5_cabj8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe6lt"]
+shader = ExtResource("1_crked")
+shader_parameter/velocidade = Vector2(0.05, 0.05)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crked"]
+load_path = "res://.godot/imported/Fundo menu.png-bfec7c9c67c3e8e668a973ce1964ce84.ctex"
+
+[node name="MenuPrincipal" type="Control" unique_id=1159262021]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="TextureRect" parent="." unique_id=728087890]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xe6lt")
+layout_mode = 0
+offset_right = 1960.0
+offset_bottom = 1960.0
+scale = Vector2(0.6800006, 0.48)
+texture = SubResource("CompressedTexture2D_crked")
+
+[node name="personagem" type="TextureRect" parent="." unique_id=1204795388]
+layout_mode = 0
+offset_left = -343.0
+offset_top = 148.0
+offset_right = 323.0
+offset_bottom = 523.0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_y4xp8")
+
+[node name="logo" type="TextureRect" parent="." unique_id=1931050529]
+layout_mode = 0
+offset_left = 289.0
+offset_top = -75.0
+offset_right = 790.0
+offset_bottom = 423.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_y4xp8")
+
+[node name="senaiLogo" type="TextureRect" parent="." unique_id=806220522]
+layout_mode = 0
+offset_left = 1044.0001
+offset_top = 621.0
+offset_right = 3204.0
+offset_bottom = 1175.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_xe6lt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1012291732]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="texto" type="Label" parent="." unique_id=1797252935]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 502.0
+offset_right = 610.0
+offset_bottom = 525.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.9590489, 0.95637923, 0.89535785, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_cabj8")
+theme_override_font_sizes/font_size = 20
+text = "Pressione Espaço para Jogar"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ncece0fg882q"]
+
+[ext_resource type="Script" uid="uid://s0e1nvhmh00o" path="res://Scripts/Coletaveis/Lixo.cs" id="1_l3b4y"]
+[ext_resource type="Texture2D" uid="uid://bpuumommgd5fx" path="res://Art/Coletavel/sacola e pneu.png" id="2_jp07t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7d2nq"]
+size = Vector3(0.33935738, 0.32873535, 0.0982666)
+
+[node name="Lixo" type="Area3D" unique_id=1923312534 groups=["coletavel"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_l3b4y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1453350993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00034999847, 6.1035156e-05, -0.0033569336)
+shape = SubResource("BoxShape3D_7d2nq")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2103200104]
+transform = Transform3D(2.2931511, 0, 0, 0, 2.7570536, 0, 0, 0, 1, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_jp07t")
+region_enabled = true
+region_rect = Rect2(32.02919, 3.0427155, 15.97081, 15.252033)
