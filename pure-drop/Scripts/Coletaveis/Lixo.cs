@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using Intefaces;
 public partial class Lixo : Area3D, IColetaveis
 {
     private BarraDePureza barraPureza;
@@ -80,7 +80,7 @@ public partial class Lixo : Area3D, IColetaveis
         // 4. Aplicar movimento final
         GlobalPosition += _velocity * fDelta;
 	}
-	 public void Execute(Player player)
+	public void Executar(Player player)
     {
         if (barraPureza != null)
         {

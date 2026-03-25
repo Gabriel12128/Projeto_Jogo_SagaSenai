@@ -3,7 +3,7 @@ using Godot;
 public class Movement
 {
     
-    private float speed = 4f;
+    private float speed = 220f;
     private float jumpSpeed = 5f;
 
     
@@ -30,7 +30,7 @@ public class Movement
         
     }
 
-    public void HandleMovement(ref Vector3 velocity, AnimationPlayer animationPlayer, Sprite3D sprite, CharacterBody3D player, bool atacando)
+    public void HandleMovement(ref Vector3 velocity, AnimationPlayer animationPlayer, Sprite3D sprite, CharacterBody3D player, bool atacando, double delta)
     {
         if (atacando)
         {
@@ -45,13 +45,13 @@ public class Movement
 
         if (direction != Vector3.Zero)
         {
-            velocity.X = direction.X * speed;
-            velocity.Z = direction.Z * speed * 2;
+            velocity.X = direction.X * speed * (float)delta;
+            velocity.Z = direction.Z * speed * (float)delta  *2;
         }
         else
         {
-            velocity.X = Mathf.MoveToward(velocity.X, 0, speed);
-            velocity.Z = Mathf.MoveToward(velocity.Z, 0, speed);
+            velocity.X = Mathf.MoveToward(velocity.X, 0, speed * (float)delta);
+            velocity.Z = Mathf.MoveToward(velocity.Z, 0, speed * (float)delta);
         }
 
         if (!player.IsOnFloor())

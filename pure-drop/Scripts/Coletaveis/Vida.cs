@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using Intefaces;
 public partial class Vida : Area3D, IColetaveis
 {
     private Vector3 _velocity;
@@ -15,7 +15,7 @@ public partial class Vida : Area3D, IColetaveis
     private float _frequencia = 3.0f; 
     private Vector3 _posicaoBase;    
 
-    public void Execute(Player player)
+    public void Executar(Player player)
     {
         player.vida = player.vidaMax;
         QueueFree();

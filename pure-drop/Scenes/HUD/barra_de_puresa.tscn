@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c7ewwd3cwff2v"]
+
+[ext_resource type="Script" uid="uid://dvpf7lwubpyxm" path="res://Scripts/gameManager/BarraDePureza.cs" id="1_fitg0"]
+
+[sub_resource type="Gradient" id="Gradient_cm67d"]
+offsets = PackedFloat32Array(0, 0.987013, 0.9935065, 1)
+colors = PackedColorArray(0.46770918, 0.32510522, 0.18759671, 1, 0.73376626, 0.73376626, 0.73376626, 1, 0.4471751, 0.3179984, 0.06896145, 0.9882353, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fitg0"]
+gradient = SubResource("Gradient_cm67d")
+width = 336
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_3allx"]
+offsets = PackedFloat32Array(0, 0.0064935065, 0.9805195, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.6697228, 0.6697227, 1, 0, 0.6295865, 0.6295865, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qf2ns"]
+gradient = SubResource("Gradient_3allx")
+width = 336
+fill_to = Vector2(1, 1)
+
+[node name="BarraDePuresa" type="Control" unique_id=583342557]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1891945786]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1596108247 groups=["barra"]]
+offset_left = 411.0
+offset_top = 20.0
+offset_right = 747.0
+offset_bottom = 84.0
+scale = Vector2(0.8484967, 0.4972778)
+max_value = 3.0
+value = 3.0
+texture_under = SubResource("GradientTexture2D_fitg0")
+texture_progress = SubResource("GradientTexture2D_qf2ns")
+script = ExtResource("1_fitg0")

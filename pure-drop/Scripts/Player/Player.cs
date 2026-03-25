@@ -1,6 +1,6 @@
 using Godot;
 using System.Threading.Tasks;
-
+using Intefaces;
 public partial class Player : CharacterBody3D
 {
     [Export] private Sprite3D sprite;
@@ -43,7 +43,7 @@ public partial class Player : CharacterBody3D
         if (!travado)
         {
             movement.HandleJump(ref velocity, this, false);
-            movement.HandleMovement(ref velocity, animationPlayer, sprite, this, false);
+            movement.HandleMovement(ref velocity, animationPlayer, sprite, this, false, delta);
         }
         else
         {
@@ -134,7 +134,7 @@ public partial class Player : CharacterBody3D
 
             GD.Print("encostou");
 
-            coletavel.Execute(this);
+            coletavel.Executar(this);
 
         }
 
