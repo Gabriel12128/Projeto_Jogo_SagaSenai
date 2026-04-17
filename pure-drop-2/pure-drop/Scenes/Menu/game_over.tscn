@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bwvx1o46dsp8i"]
+
+[ext_resource type="Script" uid="uid://dtwaehi1bwim4" path="res://Scripts/Menu/GameOver.cs" id="1_g443n"]
+[ext_resource type="Texture2D" uid="uid://dnc2goadkwjji" path="res://Art/menu/Bnormal.png" id="1_s5di5"]
+[ext_resource type="PackedScene" uid="uid://clvw34jsho20w" path="res://Scenes/Menu/menu_principal.tscn" id="2_70ril"]
+[ext_resource type="Texture2D" uid="uid://bt2b3jryl6f7g" path="res://Art/menu/Bpressed.png" id="2_g443n"]
+[ext_resource type="Texture2D" uid="uid://d4cgugwnaycrn" path="res://Art/menu/Bhover.png" id="3_70ril"]
+[ext_resource type="PackedScene" uid="uid://bpbjmcwiceyv5" path="res://Scenes/levels/lvl_1.tscn" id="3_mwwq1"]
+[ext_resource type="Texture2D" uid="uid://dre4u852qvdd7" path="res://Art/menu/Bdisable.png" id="4_mwwq1"]
+[ext_resource type="AudioStream" uid="uid://dgwlfhq64ku36" path="res://audios/Botoes/SomClick.mp3" id="8_yk6vx"]
+[ext_resource type="AudioStream" uid="uid://dk4fd3t0q3lcp" path="res://audios/BackGround/SomGameOver.mp3" id="9_1jynu"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=98800258 node_paths=PackedStringArray("somDeclick", "somDefundo", "rec", "menu", "sair", "labels")]
+process_mode = 3
+script = ExtResource("1_g443n")
+somDeclick = NodePath("SomDeClick")
+somDefundo = NodePath("SomDefundo")
+rec = NodePath("VBoxContainer/Recomecar")
+menu = NodePath("VBoxContainer/Menu")
+sair = NodePath("VBoxContainer/sair")
+labels = [NodePath("PlayLabel"), NodePath("PlayLabel2"), NodePath("PlayLabel3")]
+menuScene = ExtResource("2_70ril")
+lvl_1 = ExtResource("3_mwwq1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=515056534]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45882353)
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=1658808955]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = -204.0
+offset_right = 283.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=528575954]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.99997
+offset_top = -328.0
+offset_right = -66.99997
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(5, 5)
+
+[node name="Recomecar" type="TextureButton" parent="VBoxContainer" unique_id=1333822336]
+layout_mode = 2
+texture_normal = ExtResource("1_s5di5")
+texture_pressed = ExtResource("2_g443n")
+texture_hover = ExtResource("3_70ril")
+texture_disabled = ExtResource("4_mwwq1")
+
+[node name="Menu" type="TextureButton" parent="VBoxContainer" unique_id=1705556818]
+layout_mode = 2
+texture_normal = ExtResource("1_s5di5")
+texture_pressed = ExtResource("2_g443n")
+texture_hover = ExtResource("3_70ril")
+texture_disabled = ExtResource("4_mwwq1")
+
+[node name="sair" type="TextureButton" parent="VBoxContainer" unique_id=1489157130]
+layout_mode = 2
+texture_normal = ExtResource("1_s5di5")
+texture_pressed = ExtResource("2_g443n")
+texture_hover = ExtResource("3_70ril")
+texture_disabled = ExtResource("4_mwwq1")
+
+[node name="PlayLabel" type="Label" parent="." unique_id=565267663]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 14.0
+offset_right = 20.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7999976, 1.2)
+theme_override_font_sizes/font_size = 20
+text = "Recomeçar"
+
+[node name="PlayLabel2" type="Label" parent="." unique_id=1088752350]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 101.00003
+offset_right = 59.0
+offset_bottom = 137.00003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7999976, 1.2)
+theme_override_font_sizes/font_size = 20
+text = "Menu"
+
+[node name="PlayLabel3" type="Label" parent="." unique_id=688658256]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 193.0
+offset_right = 8.0
+offset_bottom = 221.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7999976, 1.2)
+theme_override_font_sizes/font_size = 20
+text = "Sair"
+
+[node name="SomDeClick" type="AudioStreamPlayer2D" parent="." unique_id=379880717]
+stream = ExtResource("8_yk6vx")
+volume_db = 14.596
+
+[node name="SomDefundo" type="AudioStreamPlayer2D" parent="." unique_id=74447186]
+stream = ExtResource("9_1jynu")
+volume_db = 10.0

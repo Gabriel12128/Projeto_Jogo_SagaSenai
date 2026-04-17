@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c37you0dwsw5k"]
+
+[ext_resource type="VideoStream" uid="uid://c2l2y6xsahfwu" path="res://Cutscenes/Creditos.ogv" id="1_7ubte"]
+[ext_resource type="Script" uid="uid://cw5auyx0psn3d" path="res://Scripts/Cutscene/Creditos.cs" id="1_s57lc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pc8yl"]
+
+[node name="Creditos" type="Node3D" unique_id=1537448972 node_paths=PackedStringArray("creditos", "sairLabel")]
+script = ExtResource("1_s57lc")
+creditos = NodePath("VideoStreamPlayer")
+cenaMenu = "res://Scenes/Menu/menu_principal.tscn"
+sairLabel = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2065746579]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_pc8yl")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1505875040]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_7ubte")
+autoplay = true
+expand = true
+
+[node name="Label" type="Label" parent="." unique_id=1154781755]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "E para pular"
+metadata/_edit_use_anchors_ = true

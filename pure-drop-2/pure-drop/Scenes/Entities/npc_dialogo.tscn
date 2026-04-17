@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://deleqy0ulqlms"]
+
+[ext_resource type="Script" uid="uid://bo1g455tfdk2t" path="res://Scripts/NPCs/NpcDialogo.cs" id="1_8djeu"]
+[ext_resource type="Texture2D" uid="uid://ciodbr2kunmha" path="res://Art/NPCs/NPC-Sheet.png" id="2_quekl"]
+[ext_resource type="PackedScene" uid="uid://drewfu0r2p6bk" path="res://Scenes/mecanicas/dialogo.tscn" id="3_xprsp"]
+[ext_resource type="Texture2D" uid="uid://dr5aksn4nv7on" path="res://Art/NPCs/Icone.png" id="4_wcous"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hur6h"]
+size = Vector3(0.22814941, 0.6023712, 0.27659512)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8djeu"]
+size = Vector3(0.7121582, 1.3163452, 1.1887054)
+
+[sub_resource type="Animation" id="Animation_quekl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCDialogo/Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_quekl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDialogo/Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(4, 4, 23, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_xprsp"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCDialogo/Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_quekl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCDialogo/Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10026456, 0.20052911, 0.30079368, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(4, 4, 23, 60), Rect2(4, 68, 23, 60), Rect2(4, 131, 23, 61), Rect2(4, 196, 23, 60), Rect2(4, 261, 23, 59)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcous"]
+_data = {
+&"RESET": SubResource("Animation_quekl"),
+&"idle": SubResource("Animation_xprsp")
+}
+
+[node name="NPCDialogo" type="Node3D" unique_id=1365668425 node_paths=PackedStringArray("falasLabel", "nomeLabel", "icone", "painelDialogo", "area")]
+script = ExtResource("1_8djeu")
+falasLabel = NodePath("Control/CanvasLayer/falas")
+nomeLabel = NodePath("Control/CanvasLayer/Nome")
+icone = NodePath("iCONE")
+painelDialogo = NodePath("Control/CanvasLayer")
+nomeNpc = "Guardiã Ana"
+falas = PackedStringArray("Prazer, sou a Ana Júlia. Você foi muito bem até aqui.", "Falta pouco, então continue firme e atento.", "Cuidado, o inimigo final se aproxima.")
+area = NodePath("NPCDialogo/InteractionArea")
+
+[node name="NPCDialogo" type="StaticBody3D" parent="." unique_id=1529318080]
+
+[node name="Sprite3D" type="Sprite3D" parent="NPCDialogo" unique_id=2100515634]
+texture_filter = 0
+texture = ExtResource("2_quekl")
+region_enabled = true
+region_rect = Rect2(4, 4, 23, 60)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCDialogo" unique_id=1844342214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021362305, -0.0020523071, 0.04482889)
+shape = SubResource("BoxShape3D_hur6h")
+
+[node name="InteractionArea" type="Area3D" parent="NPCDialogo" unique_id=2038489991]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCDialogo/InteractionArea" unique_id=1890690966]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0020141602, -0.0039520264, -0.0020561218)
+shape = SubResource("BoxShape3D_8djeu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPCDialogo" unique_id=1890954200]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_wcous")
+autoplay = &"idle"
+
+[node name="iCONE" type="Sprite3D" parent="." unique_id=406170398]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.086826086, 0.41242427, 0)
+texture_filter = 0
+texture = ExtResource("4_wcous")
+region_enabled = true
+region_rect = Rect2(55, 61, 180, 170)
+
+[node name="Control" parent="." unique_id=1865161334 instance=ExtResource("3_xprsp")]
+
+[editable path="Control"]

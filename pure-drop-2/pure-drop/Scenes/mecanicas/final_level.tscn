@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://7h5x5yea1tto"]
+
+[ext_resource type="Script" uid="uid://bb3iqvurv1lbd" path="res://Scripts/FinalLevel/FinalLevel.cs" id="1_u63a5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u63a5"]
+size = Vector3(1, 21.263123, 23.649963)
+
+[node name="FinalLevel" type="Node3D" unique_id=1488171966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15071392, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=694973408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.13304, 0, 0)
+script = ExtResource("1_u63a5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1722121637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.910202, 2.0958557, 1.7727966)
+shape = SubResource("BoxShape3D_u63a5")

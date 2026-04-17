@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://bihiuvrdsmjc7"]
+
+[ext_resource type="Script" uid="uid://blaqvdny04p4e" path="res://Scripts/EnemyGarrafa/EnemyGarrafa.cs" id="1_17tf4"]
+[ext_resource type="Texture2D" uid="uid://c0l5mddmged5r" path="res://Art/Enemyes/Garrafinha.png" id="1_a1lhh"]
+[ext_resource type="AudioStream" uid="uid://dkt7txeej2ik2" path="res://audios/Ataque/SomDano.mp3" id="1_ynuqm"]
+[ext_resource type="PackedScene" uid="uid://c2jyq44xywwh6" path="res://Scenes/Entities/projetilGarrafa.tscn" id="2_14woe"]
+[ext_resource type="AudioStream" uid="uid://bgdypuufrub7c" path="res://audios/Ataque/SomDeMorte.mp3" id="5_yqvdy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1lhh"]
+radius = 0.10986328
+height = 0.5551758
+
+[sub_resource type="Animation" id="Animation_a1lhh"]
+resource_name = "AttackDis"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1019768, 0.2039536, 0.3005632, 0.40611812, 0.5063059, 0.5991143, 0.699302, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 144, 32, 32), Rect2(80, 144, 32, 32), Rect2(144, 144, 32, 32), Rect2(208, 144, 32, 32), Rect2(272, 144, 32, 32), Rect2(336, 144, 32, 32), Rect2(400, 144, 32, 32), Rect2(464, 144, 32, 32), Rect2(336, 80, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_17tf4"]
+resource_name = "AttackSoco"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1019768, 0.2039536, 0.3005632, 0.40611812, 0.5063059, 0.5991143, 0.699302, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 144, 32, 32), Rect2(80, 144, 32, 32), Rect2(144, 144, 32, 32), Rect2(208, 144, 32, 32), Rect2(272, 144, 32, 32), Rect2(336, 144, 32, 32), Rect2(400, 144, 32, 32), Rect2(464, 144, 32, 32), Rect2(336, 80, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_0el5d"]
+resource_name = "Death"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09482053, 0.20037545, 0.29877412, 0.39717278, 0.5080949, 0.6047045, 0.7054179, 0.7966603),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 208, 32, 32), Rect2(80, 208, 32, 32), Rect2(144, 208, 32, 32), Rect2(208, 208, 32, 32), Rect2(272, 208, 32, 32), Rect2(336, 208, 32, 32), Rect2(400, 208, 32, 32), Rect2(456, 208, 32, 32), Rect2(456, 192, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_i1vrr"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10018773, 0.20216453, 0.29340693),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 208, 32, 32), Rect2(16, 272, 32, 32), Rect2(16, 208, 32, 32), Rect2(16, 272, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_14woe"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0966096, 0.20037545, 0.29698506),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 16, 32, 32), Rect2(80, 16, 32, 32), Rect2(144, 16, 32, 32), Rect2(208, 16, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+
+[sub_resource type="Animation" id="Animation_yqvdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 16, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_g3cnw"]
+resource_name = "Walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a1lhh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20574266, 0.40611812, 0.59933734, 0.8015534, 1.0019289),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(16, 80, 32, 32), Rect2(80, 80, 32, 32), Rect2(144, 80, 32, 32), Rect2(208, 80, 32, 32), Rect2(272, 80, 32, 32), Rect2(336, 80, 32, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0el5d"]
+_data = {
+&"AttackDis": SubResource("Animation_a1lhh"),
+&"AttackSoco": SubResource("Animation_17tf4"),
+&"Death": SubResource("Animation_0el5d"),
+&"Hit": SubResource("Animation_i1vrr"),
+&"Idle": SubResource("Animation_14woe"),
+&"RESET": SubResource("Animation_yqvdy"),
+&"Walk": SubResource("Animation_g3cnw")
+}
+
+[node name="EnemyGarrafa" type="CharacterBody3D" unique_id=1544499552 node_paths=PackedStringArray("animationPlayer", "sprite", "spawnProjetil", "somAtaque", "somDano") groups=["enemy"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_17tf4")
+animationPlayer = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite3D")
+projetilScene = ExtResource("2_14woe")
+spawnProjetil = NodePath("Marker3D")
+somAtaque = NodePath("SomDeAtaque")
+somDano = NodePath("SomDeDano")
+distanciaPercepcao = 10.0
+vida = 2
+speed = 2.0
+rangeIdealMin = 5.0
+rangeMelee = 1.2
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=9115006]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.28996608, 0)
+texture_filter = 0
+texture = ExtResource("1_a1lhh")
+region_enabled = true
+region_rect = Rect2(16, 16, 32, 32)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=727558403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26489258, 0)
+shape = SubResource("CapsuleShape3D_a1lhh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=45535124]
+libraries/ = SubResource("AnimationLibrary_0el5d")
+autoplay = &"Idle"
+
+[node name="SomDeAtaque" type="AudioStreamPlayer2D" parent="." unique_id=855474164]
+
+[node name="SomDeDano" type="AudioStreamPlayer2D" parent="." unique_id=1258746645]
+stream = ExtResource("1_ynuqm")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=863810010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22056532, 0.2519505, 0)
+
+[node name="SomDeMorte" type="AudioStreamPlayer2D" parent="." unique_id=2059639711]
+stream = ExtResource("5_yqvdy")
+volume_db = -4.0

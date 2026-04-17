@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://c6hjrh8wt1y75"]
+
+[ext_resource type="Texture2D" uid="uid://bw5o4n767n0fx" path="res://Art/Enemyes/Latinha.png" id="1_0lgk3"]
+[ext_resource type="Script" uid="uid://bix4yi2kvu6sf" path="res://Scripts/EnemyPneu/EnemyPneu.cs" id="1_fymjl"]
+[ext_resource type="AudioStream" uid="uid://dkt7txeej2ik2" path="res://audios/Ataque/SomDano.mp3" id="1_khqxu"]
+[ext_resource type="PackedScene" uid="uid://ncece0fg882q" path="res://Scenes/Coletaveis/lixo.tscn" id="2_yhpyx"]
+[ext_resource type="AudioStream" uid="uid://bjjs47bgiuq4o" path="res://audios/Ataque/SomDeLata.mp3" id="5_0v758"]
+[ext_resource type="AudioStream" uid="uid://bgdypuufrub7c" path="res://audios/Ataque/SomDeMorte.mp3" id="6_7iebh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0lgk3"]
+radius = 0.11621094
+height = 0.54244995
+
+[sub_resource type="Animation" id="Animation_0lgk3"]
+resource_name = "Attack"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10113558, 0.19907066, 0.30269417, 0.40180945, 0.4985073, 0.60436714, 0.7023022, 0.8059257, 0.905041, 0.9980611),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 112, 32, 32), Rect2(56, 112, 32, 32), Rect2(96, 112, 48, 32), Rect2(144, 112, 48, 32), Rect2(192, 112, 48, 32), Rect2(240, 112, 48, 32), Rect2(56, 112, 32, 32), Rect2(96, 112, 48, 32), Rect2(144, 112, 48, 32), Rect2(192, 112, 48, 32), Rect2(240, 112, 48, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_fymjl"]
+resource_name = "Death"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1005234, 0.19736911, 0.2991184, 0.4057713, 0.49760884, 0.60415685, 0.7022284, 0.7993871),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 160, 32, 32), Rect2(56, 160, 32, 32), Rect2(104, 160, 32, 32), Rect2(152, 160, 32, 32), Rect2(200, 160, 32, 32), Rect2(248, 160, 32, 32), Rect2(296, 160, 32, 32), Rect2(344, 160, 32, 32), Rect2(344, 152, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_yhpyx"]
+resource_name = "Hit"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1998209, 0.4020936, 0.60016364),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 160, 32, 32), Rect2(8, 64, 32, 32), Rect2(8, 160, 32, 32), Rect2(8, 64, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_0v758"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09826221, 0.19823332, 0.30029768, 0.40283218),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 16, 32, 32), Rect2(56, 16, 32, 32), Rect2(104, 16, 32, 32), Rect2(152, 16, 32, 32), Rect2(200, 16, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_7iebh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(8, 16, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_cbepb"]
+resource_name = "Walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0lgk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19908778, 0.3999952, 0.603394, 0.8021723, 0.9989601),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(8, 64, 32, 32), Rect2(56, 64, 32, 32), Rect2(104, 64, 32, 32), Rect2(152, 64, 32, 32), Rect2(200, 64, 32, 32), Rect2(248, 64, 32, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klq06"]
+_data = {
+&"Attack": SubResource("Animation_0lgk3"),
+&"Death": SubResource("Animation_fymjl"),
+&"Hit": SubResource("Animation_yhpyx"),
+&"Idle": SubResource("Animation_0v758"),
+&"RESET": SubResource("Animation_7iebh"),
+&"Walk": SubResource("Animation_cbepb")
+}
+
+[node name="EnemyLatinha" type="CharacterBody3D" unique_id=499874288 node_paths=PackedStringArray("animationPlayer", "sprite", "somRolagem", "somDano") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_fymjl")
+animationPlayer = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite3D")
+somRolagem = NodePath("SomRolagem")
+somDano = NodePath("SomDeDano")
+itemColetavel = ExtResource("2_yhpyx")
+speedRoll = 8.0
+rollDuration = 0.8
+vida = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=57780934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271286, 0)
+shape = SubResource("CapsuleShape3D_0lgk3")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=798221634]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.32925358, 0)
+texture_filter = 0
+texture = ExtResource("1_0lgk3")
+region_enabled = true
+region_rect = Rect2(8, 16, 32, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1512264533]
+libraries/ = SubResource("AnimationLibrary_klq06")
+autoplay = &"Idle"
+
+[node name="SomDeDano" type="AudioStreamPlayer2D" parent="." unique_id=996893816]
+stream = ExtResource("1_khqxu")
+
+[node name="SomRolagem" type="AudioStreamPlayer2D" parent="." unique_id=1237522914]
+stream = ExtResource("5_0v758")
+volume_db = 5.0
+pitch_scale = 1.29
+
+[node name="SomDeMorte" type="AudioStreamPlayer2D" parent="." unique_id=1191272569]
+stream = ExtResource("6_7iebh")
+volume_db = -4.0

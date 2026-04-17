@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b8h6dpumfffei"]
+
+[ext_resource type="Script" uid="uid://df8dea31ja8bm" path="res://Scripts/AreaDeCombate/CombateArea.cs" id="1_kb7ge"]
+[ext_resource type="PackedScene" uid="uid://c6hjrh8wt1y75" path="res://Scenes/Entities/enemy_latinha.tscn" id="2_wonfq"]
+[ext_resource type="PackedScene" uid="uid://crl8i7evyo2y4" path="res://Scenes/Coletaveis/vida.tscn" id="3_kb7ge"]
+[ext_resource type="PackedScene" uid="uid://btc0mtqpfedbw" path="res://Scenes/Entities/enemy_pneu.tscn" id="3_uec2d"]
+[ext_resource type="Texture2D" uid="uid://dgo2ms3mwehce" path="res://Art/HUD/goIcone.png" id="4_hb0ql"]
+[ext_resource type="Script" uid="uid://p0m8r4l540qq" path="res://Scripts/AreaDeCombate/Go.cs" id="5_trc8b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6g8wp"]
+size = Vector3(0.2767334, 5.411255, 8.630188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t74b5"]
+size = Vector3(0.21411133, 5.9588623, 9.155762)
+
+[node name="AreaManager" type="Node3D" unique_id=1326948429 node_paths=PackedStringArray("goSprite", "leftWall", "rightWall", "spawnLeft", "spawnRight", "spawnLife")]
+script = ExtResource("1_kb7ge")
+enemyScenes = Array[PackedScene]([ExtResource("2_wonfq"), ExtResource("3_uec2d")])
+lifeScene = ExtResource("3_kb7ge")
+goSprite = NodePath("Control/CanvasLayer/Go")
+totalEnemies = 2
+tempoParaTravar = 1.0
+leftWall = NodePath("paredeEsquerda")
+rightWall = NodePath("paredeDireita")
+spawnLeft = NodePath("Points/Spown2")
+spawnRight = NodePath("Points/Spown")
+spawnLife = NodePath("Points/SpawnLife")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=1370909653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2425609, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1976431800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.627468, 1.6435844, 3.815094)
+shape = SubResource("BoxShape3D_6g8wp")
+
+[node name="paredeEsquerda" type="StaticBody3D" parent="." unique_id=1854206223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.331427, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="paredeEsquerda" unique_id=2147343946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.822, 4.078)
+shape = SubResource("BoxShape3D_t74b5")
+
+[node name="paredeDireita" type="StaticBody3D" parent="." unique_id=1198390971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.331, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="paredeDireita" unique_id=1384730597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.822, 4.078)
+shape = SubResource("BoxShape3D_t74b5")
+
+[node name="Points" type="Node3D" parent="." unique_id=394673101]
+
+[node name="Spown" type="Marker3D" parent="Points" unique_id=1093526898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.064848, 1.0589304, 3.954218)
+
+[node name="Spown2" type="Marker3D" parent="Points" unique_id=2090308541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.850646, 1.0589304, 3.954218)
+
+[node name="SpawnLife" type="Marker3D" parent="Points" unique_id=2112058312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.399463, 3.9637518)
+
+[node name="Control" type="Control" parent="." unique_id=2064047600]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1911854709]
+
+[node name="Go" type="Sprite2D" parent="Control/CanvasLayer" unique_id=652036326]
+position = Vector2(1016, 163.00002)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_hb0ql")
+script = ExtResource("5_trc8b")
+Distancia = 25.0
+Velocidade = 15.0
