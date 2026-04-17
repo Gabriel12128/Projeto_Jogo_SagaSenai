@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "1c4aUnLn11c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\GABRIEL\\Downloads\\pure-drop-2\\pure-drop\\PureDrop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\godot.sourcegenerators\\4.6.0\\godot.sourcegenerators.4.6.0.nupkg.sha512",
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\godotsharp\\4.6.0\\godotsharp.4.6.0.nupkg.sha512",
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.23\\microsoft.netcore.app.runtime.win-x64.8.0.23.nupkg.sha512",
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.23\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.23.nupkg.sha512",
+    "C:\\Users\\GABRIEL\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.23\\microsoft.aspnetcore.app.runtime.win-x64.8.0.23.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://w5qf8wth7gg2"]
+
+[ext_resource type="Texture2D" uid="uid://ca0kjs530gu8o" path="res://Art/Cenarios/FlorestaPureDrop2.png" id="1_me6yq"]
+[ext_resource type="Script" uid="uid://bl335vjxffq0l" path="res://Scripts/Player/CameraPlayer.cs" id="2_0hdd5"]
+[ext_resource type="PackedScene" uid="uid://b5gau8ydthqgk" path="res://Scenes/Entities/player.tscn" id="2_8272l"]
+[ext_resource type="PackedScene" uid="uid://deleqy0ulqlms" path="res://Scenes/Entities/npc_dialogo.tscn" id="4_ot5sn"]
+[ext_resource type="PackedScene" uid="uid://b8h6dpumfffei" path="res://Scenes/mecanicas/CombateArea.tscn" id="5_obu67"]
+[ext_resource type="AudioStream" uid="uid://dxw4p65df67ea" path="res://audios/BackGround/MusicaFloresta.mp3" id="6_b8eoo"]
+[ext_resource type="PackedScene" uid="uid://7h5x5yea1tto" path="res://Scenes/mecanicas/final_level.tscn" id="7_1rpds"]
+[ext_resource type="PackedScene" uid="uid://bdtw426py6d4q" path="res://Scenes/mecanicas/boss_area.tscn" id="8_5p513"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ot5sn"]
+size = Vector2(50, 3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_obu67"]
+data = PackedVector3Array(25, -1.5, 0, -25, -1.5, 0, 25, 1.5, 0, -25, -1.5, 0, -25, 1.5, 0, 25, 1.5, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b8eoo"]
+size = Vector3(140, 2, 0.1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ot5sn"]
+data = PackedVector3Array(-70, 1, 0.049999997, 70, 1, 0.049999997, -70, -1, 0.049999997, 70, 1, 0.049999997, 70, -1, 0.049999997, -70, -1, 0.049999997, 70, 1, -0.049999997, -70, 1, -0.049999997, 70, -1, -0.049999997, -70, 1, -0.049999997, -70, -1, -0.049999997, 70, -1, -0.049999997, 70, 1, 0.049999997, 70, 1, -0.049999997, 70, -1, 0.049999997, 70, 1, -0.049999997, 70, -1, -0.049999997, 70, -1, 0.049999997, -70, 1, -0.049999997, -70, 1, 0.049999997, -70, -1, -0.049999997, -70, 1, 0.049999997, -70, -1, 0.049999997, -70, -1, -0.049999997, 70, 1, 0.049999997, -70, 1, 0.049999997, 70, 1, -0.049999997, -70, 1, 0.049999997, -70, 1, -0.049999997, 70, 1, -0.049999997, -70, -1, 0.049999997, 70, -1, 0.049999997, -70, -1, -0.049999997, 70, -1, 0.049999997, 70, -1, -0.049999997, -70, -1, -0.049999997)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b8eoo"]
+data = PackedVector3Array(-70, 1, 0.049999997, 70, 1, 0.049999997, -70, -1, 0.049999997, 70, 1, 0.049999997, 70, -1, 0.049999997, -70, -1, 0.049999997, 70, 1, -0.049999997, -70, 1, -0.049999997, 70, -1, -0.049999997, -70, 1, -0.049999997, -70, -1, -0.049999997, 70, -1, -0.049999997, 70, 1, 0.049999997, 70, 1, -0.049999997, 70, -1, 0.049999997, 70, 1, -0.049999997, 70, -1, -0.049999997, 70, -1, 0.049999997, -70, 1, -0.049999997, -70, 1, 0.049999997, -70, -1, -0.049999997, -70, 1, 0.049999997, -70, -1, 0.049999997, -70, -1, -0.049999997, 70, 1, 0.049999997, -70, 1, 0.049999997, 70, 1, -0.049999997, -70, 1, 0.049999997, -70, 1, -0.049999997, 70, 1, -0.049999997, -70, -1, 0.049999997, 70, -1, 0.049999997, -70, -1, -0.049999997, 70, -1, 0.049999997, 70, -1, -0.049999997, -70, -1, -0.049999997)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlbko"]
+size = Vector3(2.9502869, 4.8673096, 8.937012)
+
+[node name="lvl_2" type="Node3D" unique_id=114500141]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=596729938]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.7368355, -2.0978756)
+texture_filter = 0
+texture = ExtResource("1_me6yq")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=70228991]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 46.084763, -0.7368355, -2.0978756)
+texture_filter = 0
+texture = ExtResource("1_me6yq")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=450224520]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 92.04075, -0.7368355, -2.0978756)
+texture_filter = 0
+texture = ExtResource("1_me6yq")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=427014328]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 52.54797, -0.9408684, 2.5656781)
+visible = false
+mesh = SubResource("QuadMesh_ot5sn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=801640914]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=1433822756]
+shape = SubResource("ConcavePolygonShape3D_obu67")
+
+[node name="WallUp" type="MeshInstance3D" parent="." unique_id=543670238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.964424, 0, -0.52168477)
+visible = false
+mesh = SubResource("BoxMesh_b8eoo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallUp" unique_id=1402535942]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp/StaticBody3D" unique_id=296207303]
+shape = SubResource("ConcavePolygonShape3D_ot5sn")
+
+[node name="WallDown" type="MeshInstance3D" parent="." unique_id=1169549797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.964424, 0, 6.7286987)
+visible = false
+mesh = SubResource("BoxMesh_b8eoo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallDown" unique_id=1670566130]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDown/StaticBody3D" unique_id=1890947425]
+shape = SubResource("ConcavePolygonShape3D_b8eoo")
+
+[node name="PAREDES" type="StaticBody3D" parent="." unique_id=2126019620]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PAREDES" unique_id=653660711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.50896, 1.9336548, 3.9685059)
+shape = SubResource("BoxShape3D_hlbko")
+
+[node name="PAREDES2" type="StaticBody3D" parent="." unique_id=1422296204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.93996, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PAREDES2" unique_id=1303676271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.50896, 1.9336548, 3.9685059)
+shape = SubResource("BoxShape3D_hlbko")
+
+[node name="Player" parent="." unique_id=1515509810 instance=ExtResource("2_8272l")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -19.381794, -0.78579307, 3.0247545)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=152168678 node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837112, 0, -0.43837112, 0.89879405, -17.29598, 3.5000002, 7.2287073)
+projection = 1
+current = true
+size = 6.0
+script = ExtResource("2_0hdd5")
+player = NodePath("../Player")
+minX = -17.0
+maxX = 200.0
+
+[node name="NPCDialogo" parent="." unique_id=1365668425 instance=ExtResource("4_ot5sn")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.571861, 0.20453262, 1.2758138)
+
+[node name="AreaManager" parent="." unique_id=1326948429 node_paths=PackedStringArray("cameraNode") instance=ExtResource("5_obu67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3726635, 0, 0)
+totalEnemies = 4
+cameraNode = NodePath("../Camera3D")
+
+[node name="AreaManager2" parent="." unique_id=1922735069 node_paths=PackedStringArray("cameraNode") instance=ExtResource("5_obu67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.994743, 0, 0)
+totalEnemies = 4
+cameraNode = NodePath("../Camera3D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=589526897]
+stream = ExtResource("6_b8eoo")
+volume_db = -10.0
+autoplay = true
+
+[node name="FinalLevel" parent="." unique_id=1488171966 instance=ExtResource("7_1rpds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.28507, 0, 0)
+
+[node name="Area3D" parent="FinalLevel" index="0" unique_id=694973408]
+nextScenePath = "res://Scenes/Cutscenes/pagando_gota.tscn"
+
+[node name="BossArea" parent="." unique_id=1657448313 node_paths=PackedStringArray("cameraNode") instance=ExtResource("8_5p513")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.57126, 0, 0)
+cameraNode = NodePath("../Camera3D")
+
+[editable path="FinalLevel"]

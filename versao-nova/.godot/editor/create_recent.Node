@@ -1,0 +1,14 @@
+AudioStreamPlayer2D
+TextureRect
+Control
+Panel
+CanvasLayer
+TextureButton
+HBoxContainer
+AnimationPlayer
+Sprite3D
+Area3D
+Marker3D
+Node3D
+CollisionShape3D
+CharacterBody3D

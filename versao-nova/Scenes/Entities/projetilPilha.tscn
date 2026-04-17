@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://xn8s1ujqt0xh"]
+
+[ext_resource type="Texture2D" uid="uid://cykf3cemnktt7" path="res://Art/Enemyes/Pilha.png" id="1_ldqhb"]
+[ext_resource type="Script" uid="uid://234xyp44gtq3" path="res://Scripts/Projeteis/ProjetilPilha.cs" id="1_ptrxs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ptrxs"]
+radius = 0.109375
+height = 0.22814941
+
+[sub_resource type="Animation" id="Animation_aiuqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ldqhb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(80, 280, 32, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_g4ark"]
+resource_name = "mov"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ldqhb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(80, 280, 32, 16), Rect2(144, 280, 32, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7eu86"]
+_data = {
+&"RESET": SubResource("Animation_aiuqy"),
+&"mov": SubResource("Animation_g4ark")
+}
+
+[node name="ProjetilPilha" type="Area3D" unique_id=461618450 groups=["projetil"]]
+script = ExtResource("1_ptrxs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027582793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1970551, -0.010192871, 0)
+shape = SubResource("CapsuleShape3D_ptrxs")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1951288195]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1_ldqhb")
+region_enabled = true
+region_rect = Rect2(80, 280, 32, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=677981086]
+libraries/ = SubResource("AnimationLibrary_7eu86")
+autoplay = &"mov"

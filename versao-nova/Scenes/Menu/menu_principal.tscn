@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://clvw34jsho20w"]
+
+[ext_resource type="Script" uid="uid://doak6cu76xo2x" path="res://Scripts/Menu/MenuPrincipal.cs" id="1_2tf8m"]
+[ext_resource type="Shader" uid="uid://mxw2a5oh8go2" path="res://Scenes/Menu/menu_principal.gdshader" id="1_crked"]
+[ext_resource type="PackedScene" uid="uid://bevsclhoidftq" path="res://Scenes/Cutscenes/cutscene_1.tscn" id="2_0pq6x"]
+[ext_resource type="Texture2D" uid="uid://chvt8cehns4bg" path="res://Art/menu/Fundo menu.png" id="2_g2vtl"]
+[ext_resource type="PackedScene" uid="uid://c37you0dwsw5k" path="res://Scenes/Cutscenes/creditos.tscn" id="3_2oeux"]
+[ext_resource type="Texture2D" uid="uid://cx2ub6slvakyn" path="res://Art/Coletavel/logo.png" id="3_y4xp8"]
+[ext_resource type="Texture2D" uid="uid://dpdpfnbu4xsw3" path="res://Art/menu/logoSenai.png" id="4_xe6lt"]
+[ext_resource type="Texture2D" uid="uid://dnc2goadkwjji" path="res://Art/menu/Bnormal.png" id="5_tve27"]
+[ext_resource type="Texture2D" uid="uid://bt2b3jryl6f7g" path="res://Art/menu/Bpressed.png" id="6_jbrdb"]
+[ext_resource type="Texture2D" uid="uid://dre4u852qvdd7" path="res://Art/menu/Bdisable.png" id="7_2tf8m"]
+[ext_resource type="Texture2D" uid="uid://d4cgugwnaycrn" path="res://Art/menu/Bhover.png" id="7_jbrdb"]
+[ext_resource type="AudioStream" uid="uid://dc2shea5eokbd" path="res://audios/BackGround/menu.mp3" id="11_k51ww"]
+[ext_resource type="AudioStream" uid="uid://dgwlfhq64ku36" path="res://audios/Botoes/SomClick.mp3" id="13_uvexo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe6lt"]
+shader = ExtResource("1_crked")
+shader_parameter/velocidade = Vector2(0.05, 0.05)
+
+[node name="MenuPrincipal" type="Control" unique_id=1159262021 node_paths=PackedStringArray("play", "creditos", "sair", "somDeclick") groups=["no_global"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2tf8m")
+play = NodePath("VBoxContainer/Play")
+creditos = NodePath("VBoxContainer/Creditos")
+sair = NodePath("VBoxContainer/Exit")
+somDeclick = NodePath("SomDeClick")
+intro = ExtResource("2_0pq6x")
+cenaCreditos = ExtResource("3_2oeux")
+
+[node name="fundo" type="TextureRect" parent="." unique_id=728087890]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xe6lt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -147.0
+offset_right = 750.0
+offset_bottom = 1165.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6800006, 0.48)
+texture = ExtResource("2_g2vtl")
+
+[node name="logo" type="TextureRect" parent="." unique_id=1931050529]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -431.0
+offset_right = 196.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_y4xp8")
+
+[node name="senaiLogo" type="TextureRect" parent="." unique_id=806220522]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -61.0
+offset_right = 1287.0
+offset_bottom = 549.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_xe6lt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1012291732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -27.0
+offset_right = -69.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=1852013591]
+layout_mode = 2
+texture_normal = ExtResource("5_tve27")
+texture_pressed = ExtResource("6_jbrdb")
+texture_hover = ExtResource("7_jbrdb")
+texture_disabled = ExtResource("7_2tf8m")
+
+[node name="Creditos" type="TextureButton" parent="VBoxContainer" unique_id=1709650334]
+layout_mode = 2
+texture_normal = ExtResource("5_tve27")
+texture_pressed = ExtResource("6_jbrdb")
+texture_hover = ExtResource("7_jbrdb")
+texture_disabled = ExtResource("7_2tf8m")
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer" unique_id=379825231]
+layout_mode = 2
+texture_normal = ExtResource("5_tve27")
+texture_pressed = ExtResource("6_jbrdb")
+texture_hover = ExtResource("7_jbrdb")
+texture_disabled = ExtResource("7_2tf8m")
+
+[node name="PlayLabel" type="Label" parent="." unique_id=1578043806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -17.99997
+offset_right = 6.0
+offset_bottom = 18.00003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7999976, 1.2)
+theme_override_font_sizes/font_size = 26
+text = "Jogar"
+
+[node name="PlayLabel3" type="Label" parent="." unique_id=112004821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 166.00003
+offset_right = 6.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7999976, 1.2)
+theme_override_font_sizes/font_size = 26
+text = "Sair"
+
+[node name="PlayLabel2" type="Label" parent="." unique_id=700818801]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = 78.0
+offset_right = 24.5
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5599952, 1.08)
+theme_override_font_sizes/font_size = 26
+text = "Creditos"
+
+[node name="SomDefundo" type="AudioStreamPlayer2D" parent="." unique_id=1149774552]
+stream = ExtResource("11_k51ww")
+volume_db = -10.0
+autoplay = true
+
+[node name="SomDeClick" type="AudioStreamPlayer2D" parent="." unique_id=155430022]
+stream = ExtResource("13_uvexo")
+volume_db = 15.509

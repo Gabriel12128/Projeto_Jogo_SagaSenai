@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b6ucxkga2v256"]
+
+[ext_resource type="Texture2D" uid="uid://vyl7u77aur5k" path="res://Art/HUD/NoSelect.png" id="1_4oilo"]
+[ext_resource type="Script" uid="uid://dwkyabe21b7f0" path="res://Scripts/HotBar/HotBar.cs" id="1_grp8j"]
+[ext_resource type="Texture2D" uid="uid://clkvguhruwqh4" path="res://Art/HUD/Select.png" id="2_kh7sx"]
+
+[node name="SelectHab" type="Node3D" unique_id=242186598]
+
+[node name="Control" type="Control" parent="." unique_id=1549163389 node_paths=PackedStringArray("slot1", "slot2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grp8j")
+slot1 = NodePath("CanvasLayer/HotBar/slot")
+slot2 = NodePath("CanvasLayer/HotBar/slot2")
+iconeNormal = ExtResource("1_4oilo")
+iconeSelecionado = ExtResource("2_kh7sx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1613748095]
+
+[node name="HotBar" type="HBoxContainer" parent="Control/CanvasLayer" unique_id=1582212706]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 11.0
+offset_right = 82.0
+offset_bottom = 91.0
+grow_horizontal = 2
+
+[node name="slot" type="TextureButton" parent="Control/CanvasLayer/HotBar" unique_id=1895896453]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+texture_normal = ExtResource("1_4oilo")
+texture_pressed = ExtResource("2_kh7sx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Control/CanvasLayer/HotBar/slot" unique_id=188834029]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot2" type="TextureButton" parent="Control/CanvasLayer/HotBar" unique_id=775752897]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("1_4oilo")
+texture_pressed = ExtResource("2_kh7sx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Control/CanvasLayer/HotBar/slot2" unique_id=105105784]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

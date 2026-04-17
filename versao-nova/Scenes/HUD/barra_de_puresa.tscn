@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c7ewwd3cwff2v"]
+
+[ext_resource type="Script" uid="uid://dvpf7lwubpyxm" path="res://Scripts/gameManager/BarraDePureza.cs" id="1_fitg0"]
+[ext_resource type="Texture2D" uid="uid://dyinhtm4ymsfn" path="res://Art/HUD/Armação_Pureza.png" id="2_bu0j5"]
+[ext_resource type="Texture2D" uid="uid://d1vukxhqoxvmx" path="res://Art/HUD/Gota.png" id="3_u6g7u"]
+
+[sub_resource type="Gradient" id="Gradient_cm67d"]
+offsets = PackedFloat32Array(0, 0.987013, 0.9935065, 1)
+colors = PackedColorArray(0.46770918, 0.32510522, 0.18759671, 1, 0.73376626, 0.73376626, 0.73376626, 1, 0.4471751, 0.3179984, 0.06896145, 0.9882353, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fitg0"]
+gradient = SubResource("Gradient_cm67d")
+width = 336
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_3allx"]
+offsets = PackedFloat32Array(0, 0.0064935065, 0.9805195, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.6697228, 0.6697227, 1, 0, 0.6295865, 0.6295865, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qf2ns"]
+gradient = SubResource("Gradient_3allx")
+width = 336
+fill_to = Vector2(1, 1)
+
+[node name="BarraDePuresa" type="Control" unique_id=583342557]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1891945786]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1596108247 groups=["barra"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -221.0
+offset_top = 52.999992
+offset_right = 115.0
+offset_bottom = 116.99999
+grow_horizontal = 0
+scale = Vector2(0.5284967, 0.33727688)
+max_value = 10.0
+texture_under = SubResource("GradientTexture2D_fitg0")
+texture_progress = SubResource("GradientTexture2D_qf2ns")
+script = ExtResource("1_fitg0")
+
+[node name="armaçãoBarra" type="TextureRect" parent="CanvasLayer" unique_id=402544873]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -228.00006
+offset_top = 32.0
+offset_right = -37.0
+offset_bottom = 90.0
+grow_horizontal = 0
+texture = ExtResource("2_bu0j5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=223100374]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -261.99994
+offset_top = 19.0
+offset_right = -213.99994
+offset_bottom = 67.0
+grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_u6g7u")

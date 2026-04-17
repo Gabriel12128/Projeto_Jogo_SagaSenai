@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://dhci1lon6hbo4"]
+
+[ext_resource type="Script" uid="uid://biny8rmsmc0d2" path="res://Scripts/Boss/BossCore.cs" id="1_mry3t"]
+[ext_resource type="PackedScene" uid="uid://c6hjrh8wt1y75" path="res://Scenes/Entities/enemy_latinha.tscn" id="2_gbfcn"]
+[ext_resource type="PackedScene" uid="uid://b6bui5b3kdreh" path="res://Scenes/Entities/shockwave.tscn" id="2_mci1o"]
+[ext_resource type="Texture2D" uid="uid://clgefegjvv0rk" path="res://Art/Boss/Boss.png" id="2_u6nay"]
+[ext_resource type="AudioStream" uid="uid://dkt7txeej2ik2" path="res://audios/Ataque/SomDano.mp3" id="5_8qf24"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6nay"]
+radius = 0.5317383
+height = 1.0634766
+
+[sub_resource type="Animation" id="Animation_vci0c"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09752461, 0.20539273, 0.304395, 0.39748666, 0.49739662, 0.60659236, 0.71137345),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 192, 64, 64), Rect2(64, 192, 64, 64), Rect2(128, 192, 64, 64), Rect2(192, 192, 64, 64), Rect2(256, 192, 64, 64), Rect2(320, 192, 64, 64), Rect2(384, 192, 64, 64), Rect2(448, 192, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_b7m6a"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10343519, 0.20982571, 0.30933395),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 192, 64, 64), Rect2(192, 192, 64, 64), Rect2(0, 192, 64, 64), Rect2(192, 192, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_u6nay"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09600966, 0.20121174, 0.3023283),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_mci1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_8qf24"]
+resource_name = "Shockwave_Attack"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10111655, 0.20019035, 0.29824278, 0.39870986, 0.501602, 0.6027186, 0.7042992, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 128, 64, 64), Rect2(64, 128, 64, 64), Rect2(128, 128, 64, 64), Rect2(192, 128, 64, 64), Rect2(256, 128, 64, 64), Rect2(320, 128, 64, 64), Rect2(384, 128, 64, 64), Rect2(448, 128, 64, 64), Rect2(0, 128, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_88chn"]
+resource_name = "Summon"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10213793, 0.19916897, 0.29926413),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(128, 128, 64, 64), Rect2(192, 128, 64, 64), Rect2(256, 128, 64, 64), Rect2(320, 128, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_e30ix"]
+resource_name = "Vulnerable_Idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1981476, 0.4025386),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 128, 64, 64), Rect2(64, 128, 64, 64), Rect2(128, 128, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_gbfcn"]
+resource_name = "Walk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_u6nay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19712621),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbfcn"]
+_data = {
+&"Death": SubResource("Animation_vci0c"),
+&"Hit": SubResource("Animation_b7m6a"),
+&"Idle": SubResource("Animation_u6nay"),
+&"RESET": SubResource("Animation_mci1o"),
+&"Shockwave_Attack": SubResource("Animation_8qf24"),
+&"Summon": SubResource("Animation_88chn"),
+&"Vulnerable_Idle": SubResource("Animation_e30ix"),
+&"Walk": SubResource("Animation_gbfcn")
+}
+
+[node name="Boss" type="CharacterBody3D" unique_id=1323913692 node_paths=PackedStringArray("anim", "sprite", "spawnPoints", "somDano") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_mry3t")
+anim = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite3D")
+minionScene = ExtResource("2_gbfcn")
+spawnPoints = [NodePath("Node3D/spawn"), NodePath("Node3D/spawn2")]
+shockwaveScene = ExtResource("2_mci1o")
+somDano = NodePath("SomEDano")
+maxHealth = 5
+stunDuration = 5.0
+minionsPerWave = 2
+maxSummonWaves = 4
+shockwaveDistance = 6.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=842973655]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.63020533, 0)
+texture_filter = 0
+texture = ExtResource("2_u6nay")
+region_enabled = true
+region_rect = Rect2(64, 0, 64, 64)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1199801399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3803711, 0)
+shape = SubResource("CapsuleShape3D_u6nay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2063009856]
+libraries/ = SubResource("AnimationLibrary_gbfcn")
+autoplay = &"Idle"
+
+[node name="SomEDano" type="AudioStreamPlayer2D" parent="." unique_id=149741683]
+stream = ExtResource("5_8qf24")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1946589674]
+
+[node name="spawn" type="Marker3D" parent="Node3D" unique_id=25898202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6053939, 0.40747666, 0)
+
+[node name="spawn2" type="Marker3D" parent="Node3D" unique_id=2018243906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66360474, 0.40747666, 0)
